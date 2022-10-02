@@ -1,70 +1,21 @@
-# Getting Started with Create React App
+# Silverfun Web App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+A one stop elderly care application for caregivers who want to find information to best help the elderly in their family or IT-literate elderly. This is a Centralised platform for elderly/caregivers to find elderly-related services to ease their workload.
+x
+## Links
 
-## Available Scripts
+### Lab 2 Deliverables
+- [Updated Use Case Diagram](https://drive.google.com/file/d/145xR1IgevtPgy0pTswUXQ2sVrHUSrZ7p/view?usp=sharing)
+- [Complete Use Case Descriptions](https://docs.google.com/document/d/1pJ7YXt6cdHUOIXnqeWPFnPxQzuyyjhpXJc4BaUUtKqo/edit?usp=sharing)
+- [Sequence Diagram](https://drive.google.com/file/d/1L2JBn0ufd-aj7mXii23HrBpnFvF_U2_1/view?usp=sharing)
+- [Class Diagram, key boundary classes and control classes](https://drive.google.com/file/d/1OCRB_nyZx84X5iSGXVA9XEk2lLlOfFHX/view?usp=sharing)
+- [Dialog Map](https://drive.google.com/file/d/1y5_Pi2TmyD5wWwoRqSOhHVKE_7sS6JoE/view?usp=sharing)
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Lab 1 Deliverables
+- [Elicitation of functional and non-functional requirements](https://docs.google.com/document/d/1P9bbLAFJryT2c78oTfMLoq4DSq6CpcltUE2q341Cdwg/edit?usp=sharing)
+- [Data Dictionary](https://docs.google.com/document/d/1_slMpRkUdA5_JditUMo-PWoPyqOaIn2V7xWBZsG9Hf4/edit?usp=sharing)
+- Initial Use Case Model
+  - [UML Diagram](https://drive.google.com/file/d/1lXMipQeOfrdRGB3QRLcAiFgK9ZV5tERu/view?usp=sharing)
+  - [Use Case Description](https://docs.google.com/document/d/1_933qOfnSg8ggZd6arUMgKy4FJbt-tFcK_od8vlHlFE/edit?usp=sharing)
+- [Figma UI Mockup](https://www.figma.com/proto/Dfnp0DX8WYHXiQXchUizvj/SC2006?node-id=30%3A16341&starting-point-node-id=30%3A16341)
