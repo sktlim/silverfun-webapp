@@ -10,7 +10,7 @@ const Header = () => {
       className={`w-full text-black flex items-center justify-between`}
     >
       <Link to="/"><img src={Logo} className="h-13 p-5 px-10" /></Link>
-      <div className={`flex items-center text-xl font-["Rubik"] px-10`}>
+      <div className={`flex items-center text-lg font-["Rubik"] px-10`}>
         <Link
           to="/Home"
           className={`p-8 + ${window.location.pathname === "/Home" ? 'underline' : ''}`}>
