@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import AboutUs from "./AboutUs";
 import Home from "./Home";
 import Login from "./Login";
@@ -53,7 +54,7 @@ function App() {
         </p>
         <h1>
           <text className="text-yellow">Silver</text>
-          Care Web
+          Fun Web
         </h1>
         <h2>
           header 2
@@ -74,6 +75,7 @@ function App() {
           text="Testing Button"
         />
       </div>
+      <Footer />
     </div>
   );
 }
