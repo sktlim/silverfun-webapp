@@ -10,7 +10,7 @@ const Footer = () => {
       className={`w-full text-black flex items-center justify-around bg-blue-100 h-min`}
     >
       <div className={`flex flex-col items-center p-5`}>
-        <Link to="/"><img src={Logo} className="h-13 p-5 px-10" /></Link>
+        <Link to="/"><img src={Logo} className="h-13 p-5 px-10" alt="logo"/></Link>
         <FooterProfile />
       </div>
       <div className={`flex p-5 justify-around text-gray-600 font-["Rubik"] w-4/6`}>
