@@ -1,15 +1,15 @@
 import Header from "../components/Header";
 
 function Notifications() {
-    return (
+  return (
     <div>
-    <Header />
-    <div className = "flex h-screen">
-        <p className = "text-center m-auto">
+      <Header />
+      <div className="flex h-screen">
+        <p className="text-center m-auto">
           alerts and notifications
         </p>
       </div>
-      </div>
-    );
-  }
-  export default Notifications;
+    </div>
+  );
+}
+export default Notifications;

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import Header from "../components/Header";
@@ -9,8 +10,19 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../firebase-config";
+
+
 
 function App() {
+  const [user, setUser] = useState({});
+
+
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+  });
+
   return (
     <div>
       <Header />
