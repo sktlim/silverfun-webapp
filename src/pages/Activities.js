@@ -31,8 +31,8 @@ function Activities(){
     <div>
     <Header />
     <div className = "flex h-screen">
-        <p className = "text-center m-auto">
-          <h1>Activities</h1>
+        <p className = "text-center m-auto ">
+          <h1 className = "mb-2">Activities</h1>
           <body>Find out more about fun and enriching activities around you!</body>
 
           <br/>
