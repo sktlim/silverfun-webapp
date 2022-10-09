@@ -1,12 +1,11 @@
 import React from "react";
-import recommendationPic from "../assets/images/recommendationPic.png"
-import fitnessIcon from "../assets/icons/fitness.svg"
-import bookIcon from "../assets/icons/book.svg"
-import busIcon from "../assets/icons/Bus.svg"
-import covidIcon from "../assets/icons/Coronavirus.svg"
-import elderlyIcon from "../assets/icons/elderly.svg"
-import hospitalIcon from "../assets/icons/hospital.svg"
-import informationIcon from "../assets/icons/Information.svg"
+import fitnessIcon from "../../assets/icons/fitness.svg"
+import bookIcon from "../../assets/icons/book.svg"
+import busIcon from "../../assets/icons/Bus.svg"
+import covidIcon from "../../assets/icons/Coronavirus.svg"
+import elderlyIcon from "../../assets/icons/elderly.svg"
+import hospitalIcon from "../../assets/icons/hospital.svg"
+import informationIcon from "../../assets/icons/Information.svg"
 
 const RecommendedItem = ({ timing, title, description, type, pic }) => {
   return (
@@ -17,7 +16,7 @@ const RecommendedItem = ({ timing, title, description, type, pic }) => {
           {timing} min
         </div>
       </div>
-      <img src={pic} alt="pic" />
+      <img src={pic} className="w-full" alt="pic" />
       <div className="flex items-center pt-5 px-3 pb-3">
         {type === "Fitness" ? (
           <img src={fitnessIcon} className="pr-2" alt="fitness" />
