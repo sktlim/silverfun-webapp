@@ -56,9 +56,12 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <text className={`justify-center text-xs`}>
-        Copyright © 2022 SilverFun. All rights reserved.
-      </text>
+      <div className={`w-full flex justify-center `}>
+        <text className={`text-center text-xs pb-3`}>
+          Copyright © 2022 SilverFun. All rights reserved.
+        </text>
+      </div>
+
     </div>
   );
 };
