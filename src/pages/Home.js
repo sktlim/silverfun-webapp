@@ -4,9 +4,17 @@ import recommendationPic from "../assets/images/recommendationPic.png"
 import RecommendedItem from "../components/Home/RecommendedItem";
 import AED from "../components/AED";
 import HealthStats from "../components/Home/HealthStats";
+import Button from "../components/Button";
+import ActivitiesPopup from "../components/Home/ActivitiesPopup";
+import HealthcarePopup from "../components/Home/HealthcarePopup";
+import ActivityPin from "../assets/icons/ActivityPin.svg"
+import HealthcarePin from "../assets/icons/HealthcarePin.svg"
+import React, { useState } from 'react'
 
 
 function Home() {
+  const ActivityFilter = true;
+  const HealthcareFilter = false;
   return (
     <div>
       <div className="relative bg-blue-100 h-screen">
@@ -24,6 +32,18 @@ function Home() {
             <div className="flex justify-center">
               <p className="text-center text-gray-600 w-8/12">Click the filters on the right of the map to see what activities or healthcare facilities are around you! Otherwise, use the search bar for your specific needs.</p>
             </div>
+          </div>
+        </div>
+        <div className="mt-20 flex mx-20 justify-around">
+          <div className="w-4/6 text-center bg-white">
+            map
+          </div>
+          <div>
+            <Button classNames="bg-white mb-6 drop-shadow-none border border-black opacity-50" icon={ActivityPin} text="Activities" />
+            <Button classNames="mb-16 bg-white mb-9 drop-shadow-none border border-black opacity-50" icon={HealthcarePin} text="Healthcare Services" />
+            {ActivityFilter ? <ActivitiesPopup /> : ""}
+            {HealthcareFilter ? <HealthcarePopup /> : ""}
+
           </div>
         </div>
       </div>
