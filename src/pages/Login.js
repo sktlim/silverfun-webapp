@@ -2,17 +2,17 @@ import { useState } from "react";
 
 
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import { TextField } from '@mui/material';
-
-import {
-  signInWithEmailAndPassword,
-} from "firebase/auth";
+import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase-config";
+import { useNavigate } from "react-router-dom";
 
 
 function Login() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const navigate = useNavigate();
 
   const login = async () => {
     try {
@@ -22,6 +22,7 @@ function Login() {
         loginPassword
       );
       console.log(user);
+      navigate("/Home");
     } catch (error) {
       console.log(error.message);
     }
@@ -42,7 +43,7 @@ function Login() {
         </h3>
       </div>
 
-      <div className="flex justify-evenly ">
+      <div className="flex justify-evenly mb-20">
         <div className="max-w-4xl mx-10 ">
           <img src={require('../assets/signup-page-art.png')} alt="Elderly exercising"/>
         </div>
@@ -50,14 +51,14 @@ function Login() {
           <div className="container mx-20 bg-blue-100 w-full rounded-xl shadow p-8 m-10">
             <div className="my-5">
               <h3>E-mail</h3>
-              <TextField fullWidth id="outlined-basic" label="Please Enter Email" variant="outlined" 
+              <TextField fullWidth id="email" label="Please Enter Email" variant="outlined" 
               onChange={(event) => {
                 setLoginEmail(event.target.value);
               }}/>
             </div>
             <div>
               <h3>Password</h3>
-              <TextField fullWidth id="outlined-basic" label="Please Enter Password" variant="outlined" 
+              <TextField fullWidth id="password" label="Please Enter Password" variant="outlined" 
               onChange={(event) => {
                 setLoginPassword(event.target.value);
               }}/>
@@ -66,7 +67,7 @@ function Login() {
           </div>
         </div>
       </div>
-
+      <Footer/>
     </div>
   );
 }

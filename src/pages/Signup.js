@@ -2,17 +2,27 @@ import { useState } from "react";
 
 import Header from "../components/Header";
 import { TextField } from '@mui/material';
+import Footer from "../components/Footer";
 import {
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../firebase-config";
-
+import { Alert } from "@material-tailwind/react";
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
+  const [cfmPassword, cfmRegisteredPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
 
   const register = async () => {
+    if (registerPassword !== cfmPassword) {
+      return setError("Passwords do not match")
+    }
+
     try {
       const user = await createUserWithEmailAndPassword(
         auth,
@@ -20,8 +30,9 @@ function Signup() {
         registerPassword
       );
       console.log(user);
+      navigate("/Login");
     } catch (error) {
-      console.log(error.message);
+      setError(error.message);
     }
   };
 
@@ -29,7 +40,7 @@ function Signup() {
   return (
     <div>
       <Header />
-
+      {error && <Alert color="red">{error}</Alert> /* FIX THIS */}
       <div className="flex-vertical h-30 align-middle mb-5">
         <h1 className="text-center m-auto text-yellow">
           <span>Welcome To Silver</span>
@@ -40,7 +51,7 @@ function Signup() {
         </h3>
       </div>
 
-      <div className="flex justify-evenly ">
+      <div className="flex justify-evenly mb-20">
         <div className="max-w-4xl mx-10 ">
           <img src={require('../assets/signup-page-art.png')} />
         </div>
@@ -48,21 +59,24 @@ function Signup() {
           <div className="container mx-20 bg-blue-100 w-full rounded-xl shadow p-8 m-10">
             <div className="my-5">
               <h3>E-mail</h3>
-              <TextField fullWidth id="outlined-basic" label="Please Enter Email" variant="outlined"
+              <TextField fullWidth id="email" label="Please Enter Email" variant="outlined"
                 onChange={(event) => {
                   setRegisterEmail(event.target.value);
                 }} />
             </div>
             <div>
               <h3>Password</h3>
-              <TextField fullWidth id="outlined-basic" label="Please Enter Password" variant="outlined"
+              <TextField fullWidth id="password" label="Please Enter Password" variant="outlined"
+                onChange={(event) => {
+                  setRegisterPassword(event.target.value);
+                }}
               />
             </div>
             <div className="my-5">
               <h3>Re-Enter Password</h3>
-              <TextField fullWidth id="outlined-basic" label="Please Enter Password Again" variant="outlined"
+              <TextField fullWidth id="cfmpassword" label="Please Enter Password Again" variant="outlined"
                 onChange={(event) => {
-                  setRegisterPassword(event.target.value);
+                  cfmRegisteredPassword(event.target.value);
                 }}
               />
               <button class=" mt-10 bg-white h-15 w-full rounded-lg align-middle items-center justify-center text-2xl rounded-md  hover:scale-105 transition-all duration-150 ease-linear drop-shadow-lg" onClick={register}>Sign up</button>
@@ -70,7 +84,7 @@ function Signup() {
           </div>
         </div>
       </div>
-
+      <Footer />
     </div>
 
   );
