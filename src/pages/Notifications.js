@@ -30,7 +30,7 @@ function Notifications() {
             <body>Upcoming healthcare appointment</body>
             <div>
             <React.Fragment>
-              <ToggleButton label="" />
+              <ToggleButton label="  " />
             </React.Fragment>
             </div>
           </div>
@@ -40,7 +40,7 @@ function Notifications() {
             <body>Upcoming courses and events</body>
             <div>
             <React.Fragment>
-              <ToggleButton label=""/>
+              <ToggleButton label="  "/>
             </React.Fragment>
             </div>
           </div>
@@ -55,7 +55,7 @@ function Notifications() {
           <body>Latest courses and events</body>
           <div>
             <React.Fragment>
-              <ToggleButton label=""/>
+              <ToggleButton label="  "/>
             </React.Fragment>
             </div>
           </div>
@@ -65,7 +65,7 @@ function Notifications() {
           <body>New healthcare statistics</body>
           <div>
             <React.Fragment>
-              <ToggleButton label=""/>
+              <ToggleButton label="  "/>
             </React.Fragment>
             </div>
           </div>
