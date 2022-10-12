@@ -7,17 +7,17 @@ import HealthStats from "../components/Home/HealthStats";
 import Button from "../components/Button";
 import ActivitiesPopup from "../components/Home/ActivitiesPopup";
 import HealthcarePopup from "../components/Home/HealthcarePopup";
+import EmptyPopup from "../components/Home/EmptyPopup";
 import ActivityPin from "../assets/icons/ActivityPin.svg"
 import HealthcarePin from "../assets/icons/HealthcarePin.svg"
 import React, { useState } from 'react'
 
 
 function Home() {
-  const ActivityFilter = true;
-  const HealthcareFilter = false;
+  const [mapFilter, setMapFilter] = useState("none");
   return (
     <div>
-      <div className="relative bg-blue-100 h-screen">
+      <div className="relative bg-blue-100 h-min pb-20">
         <Header />
         <div className="absolute w-full flex justify-end">
           <AED />
@@ -39,10 +39,9 @@ function Home() {
             map
           </div>
           <div>
-            <Button classNames="bg-white mb-6 drop-shadow-none border border-black opacity-50" icon={ActivityPin} text="Activities" />
-            <Button classNames="mb-16 bg-white mb-9 drop-shadow-none border border-black opacity-50" icon={HealthcarePin} text="Healthcare Services" />
-            {ActivityFilter ? <ActivitiesPopup /> : ""}
-            {HealthcareFilter ? <HealthcarePopup /> : ""}
+            <Button classNames={`bg-white mb-6 drop-shadow-none border border-black opacity-50 text-lg + ${mapFilter === "Activities"? 'opacity-100 ': ''}`} icon={ActivityPin} text="  Activities" onClickHandler={() => setMapFilter(mapFilter === "Activities"? "none":"Activities")}/>
+            <Button classNames={`mb-16 bg-white mb-9 drop-shadow-none border border-black opacity-50 text-lg + ${mapFilter === "Healthcare"? 'opacity-100 ': ''}`} icon={HealthcarePin} text=" Healthcare Services" onClickHandler={() => setMapFilter(mapFilter === "Healthcare"? "none":"Healthcare")}/>
+            {mapFilter === "Activities" ? <ActivitiesPopup /> : mapFilter === "Healthcare" ? <HealthcarePopup /> :<EmptyPopup />}
 
           </div>
         </div>
