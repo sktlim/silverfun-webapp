@@ -67,6 +67,7 @@ function Home() {
             description="Clock in some exercises with the equipments available!"
             type="Fitness"
             pic={recommendationPic}
+            onClickHandler={event =>  window.location.href='/ActivityDetails'}
           />
           <RecommendedItem
             timing="10"
@@ -74,6 +75,7 @@ function Home() {
             description="Book an appointment for your regular health checkup."
             type="Hospital"
             pic={recommendationPic}
+            onClickHandler={event =>  window.location.href='/HealthcareDetails'}
           />
           <RecommendedItem
             timing="15"
@@ -81,6 +83,7 @@ function Home() {
             description="Browse and enjoy the extensive collection of books here! "
             type="Library"
             pic={recommendationPic}
+            onClickHandler={event =>  window.location.href='/ActivityDetails'}
           />
         </div>
         <HealthStats />

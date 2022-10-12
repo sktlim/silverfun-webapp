@@ -6,6 +6,8 @@ import Elderly from "../assets/icons/Grandfather.svg";
 import Boxes from "../components/Boxes";
 import GMaps from "../components/GMaps";
 import React from "react";
+import Footer from "../components/Footer";
+
 
 function Healthcare() {
   const url1 = 'https://storage.googleapis.com/swe-silverfun-app.appspot.com/retail-pharmacy-locations-kml.kml';
@@ -19,9 +21,9 @@ function Healthcare() {
 
   return (
     <div>
-      <Header />
-      <div className="flex h-screen">
-        <p className="text-center m-auto">
+    <Header />
+    <div className = "flex h-min">
+        <p className = "text-center m-auto">
           <h1>Healthcare Services</h1>
           <body>Find out more about healthcare services you might need around <br />you, and other necessary information like details on how to make appointments!</body>
 
@@ -90,7 +92,8 @@ function Healthcare() {
           <br />
         </p>
       </div>
-    </div>
-  );
-}
-export default Healthcare;
+      <Footer />
+      </div>
+    );
+  }
+  export default Healthcare;
