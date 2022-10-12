@@ -4,9 +4,11 @@ import React, { Component } from "react";
 import ToggleButton from "../components/ToggleButton";
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import {BrowserRouter as Router, Link} from 'react-router-dom';
 
 function Notifications() {
     return (
+    <router>
     <div>
     <Header />
     <div className = "flex h-screen">
@@ -63,19 +65,26 @@ function Notifications() {
             <React.Fragment>
               <ToggleButton label="    "/>
             </React.Fragment>
+            <br></br>
+            <br></br>
             </div>
           </div>
-          </div>
+        </div>
         </p>
+
     </div>
-    <Stack direction="row" spacing={4}>
-    <Button style={{ marginLeft: 1050 }} variant="outlined" color="error">Cancel</Button>
-    <Button variant="contained" color="success">Save Changes</Button>
-    </Stack>
+    <Link to="/Home">
+      <Stack direction="row" spacing={4}>
+        <Button style={{ marginLeft: 1050 }} variant="outlined" color="error">Cancel</Button>
+        <Button variant="contained" color="success">Save Changes</Button>
+      </Stack>
+    </Link>
     <br></br>
     <br></br>
     <Footer />
     </div>
+    
+    </router>
     );
 }
 export default Notifications;
