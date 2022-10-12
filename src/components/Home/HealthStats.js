@@ -28,7 +28,7 @@ const HealthStats = () => {
         <p className="pt-8 px-5 text-gray-600 font-['Rubik']">
           <Link
             to="/Home/DashboardCancers"
-            className={`${location.pathname === "/" ? 'underline' : location.pathname === "/Home/DashboardCancers" ? 'underline' : ''}`}>
+            className={`${location.pathname === "/Home" ? 'underline' : location.pathname === "/Home/DashboardCancers" ? 'underline' : ''}`}>
             Cancers
           </Link>
         </p>
