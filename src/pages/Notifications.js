@@ -2,7 +2,8 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import React, { Component } from "react";
 import ToggleButton from "../components/ToggleButton";
-import { render } from "@testing-library/react";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 function Notifications() {
     return (
@@ -65,6 +66,10 @@ function Notifications() {
           </div>
         </p>
     </div>
+    <Stack direction="row" spacing={4}>
+    <Button style={{ marginLeft: 1050 }} variant="outlined" color="error">Cancel</Button>
+    <Button variant="contained" color="success">Save Changes</Button>
+    </Stack>
     <Footer />
     </div>
     );
