@@ -70,6 +70,8 @@ function Notifications() {
     <Button style={{ marginLeft: 1050 }} variant="outlined" color="error">Cancel</Button>
     <Button variant="contained" color="success">Save Changes</Button>
     </Stack>
+    <br></br>
+    <br></br>
     <Footer />
     </div>
     );
