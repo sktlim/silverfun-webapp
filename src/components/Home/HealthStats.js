@@ -2,8 +2,8 @@ import React from "react";
 import searchIcon from "../../assets/icons/search.svg"
 import { Link } from "react-router-dom";
 import Cancers from "./Cancers";
+import Hypertension from "./Hypertension1";
 import DALYs from "./DALYs";
-import Hypertension from "./Hypertension";
 import {
   BrowserRouter as Router,
   Routes,
