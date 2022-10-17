@@ -2,25 +2,29 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import React, { Component } from "react";
 import ToggleButton from "../components/ToggleButton";
-import { render } from "@testing-library/react";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import {BrowserRouter as Router, Link} from 'react-router-dom';
 
 function Notifications() {
     return (
+    <router>
     <div>
     <Header />
     <div className = "flex h-screen">
         <p className = "text-center m-auto">
-          <h2>Alerts and Notifications</h2>
+          <h1>Alerts and Notifications</h1>
           <br></br>
           <br></br>
 
           <div>
           <div class="w-full text-black flex items-center justify-between">
-            <h3>Alerts</h3>
+            <h2>Alerts</h2>
           </div>
+          <br></br>
 
           <div class="w-full text-black flex items-center justify-between">
-            <p>Upcoming healthcare appointment</p>
+            <h5>Upcoming healthcare appointment</h5>
             <div>
             <React.Fragment>
               <ToggleButton label=" " />
@@ -30,7 +34,7 @@ function Notifications() {
 
           <br></br>
           <div class="w-full text-black flex items-center justify-between">
-            <p>Upcoming courses and events</p>
+            <h5>Upcoming courses and events</h5>
             <div>
             <React.Fragment>
               <ToggleButton label="  "/>
@@ -41,11 +45,12 @@ function Notifications() {
           <br></br>
           <br></br>
           <div class="w-full text-black flex items-center justify-between">
-          <h3>Notifications</h3>
+          <h2>Notifications</h2>
           </div>
+          <br></br>
 
           <div class="w-full text-black flex items-center justify-between">
-          <body>Latest courses and events</body>
+          <h5>Latest courses and events</h5>
             <div>
             <React.Fragment>
               <ToggleButton label="   "/>
@@ -55,18 +60,31 @@ function Notifications() {
           <br></br>
 
           <div class="w-full text-black flex items-center justify-between">
-          <body>New healthcare statistics</body>
+          <h5>New healthcare statistics</h5>
             <div>
             <React.Fragment>
               <ToggleButton label="    "/>
             </React.Fragment>
+            <br></br>
+            <br></br>
             </div>
           </div>
-          </div>
+        </div>
         </p>
+
     </div>
+    <Link to="/Home">
+      <Stack direction="row" spacing={4}>
+        <Button style={{ marginLeft: 1050 }} variant="outlined" color="error">Cancel</Button>
+        <Button variant="contained" color="success">Save Changes</Button>
+      </Stack>
+    </Link>
+    <br></br>
+    <br></br>
     <Footer />
     </div>
+    
+    </router>
     );
 }
 export default Notifications;
