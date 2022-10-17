@@ -2,7 +2,7 @@ import React from "react";
 import searchIcon from "../../assets/icons/search.svg"
 import { Link } from "react-router-dom";
 import Cancers from "./Cancers";
-import Hypertension from "./Hypertension1";
+import Hypertension from "./Hypertension";
 import DALYs from "./DALYs";
 import {
   BrowserRouter as Router,
@@ -47,17 +47,20 @@ const HealthStats = () => {
           </Link>
         </p>
       </div>
-      <div className="w-full h-min">
+      <div className="w-full flex flex-col justify-center">
         <h2 className="p-10 text-center text-yellow">Health Statistics</h2>
-        <div>
-          <Routes>
-            <Route path='/' element={<Cancers />} />
-            <Route path='/DashboardCancers' element={<Cancers />} />
-            <Route path='/DashboardHypertension' element={<Hypertension />} />
-            <Route path='/DashboardDALYs' element={<DALYs />} />
-          </Routes>
+        <div className="w-full h-min">
+          <div>
+            <Routes>
+              <Route path='/' element={<Cancers />} />
+              <Route path='/DashboardCancers' element={<Cancers />} />
+              <Route path='/DashboardHypertension' element={<Hypertension />} />
+              <Route path='/DashboardDALYs' element={<DALYs />} />
+            </Routes>
+          </div>
         </div>
       </div>
+
     </div>
   );
 };
