@@ -5,6 +5,7 @@ import Book from "../assets/icons/Book.png";
 import Bus from "../assets/icons/Bus.png";
 import Boxes from  "../components/Boxes";
 import Food from "../assets/icons/Food.png";
+import Footer from "../components/Footer";
 
 
 function Activities(){
@@ -12,7 +13,7 @@ function Activities(){
   return (
     <div>
     <Header />
-    <div className = "flex h-screen">
+    <div className = "flex h-min">
         <p className = "text-center m-auto ">
           <h1 className = "mb-2">Activities</h1>
           <body>Find out more about fun and enriching activities around you!</body>
@@ -77,6 +78,7 @@ function Activities(){
 
         </p>
       </div>
+      <Footer />
       </div>
     );
 
