@@ -1,0 +1,31 @@
+year,disease,prevalence_rate
+1992,Hypertension,16.1
+1992,Diabetes,7.3
+1992,Hyperlipidaemia,na
+1992,Obesity,5.1
+1992,Daily Smoking,18.3
+1998,Hypertension,21.5
+1998,Diabetes,7.4
+1998,Hyperlipidaemia,na
+1998,Obesity,6
+1998,Daily Smoking,15.2
+2004,Hypertension,20.1
+2004,Diabetes,7
+2004,Hyperlipidaemia,na
+2004,Obesity,6.9
+2004,Daily Smoking,12.6
+2010,Hypertension,18.9
+2010,Diabetes,8.3
+2010,Hyperlipidaemia,25.2
+2010,Obesity,10.8
+2010,Daily Smoking,14.3
+2013,Hypertension,na
+2013,Diabetes,na
+2013,Hyperlipidaemia,na
+2013,Obesity,8.6
+2013,Daily Smoking,13.3
+2017,Hypertension,21.5
+2017,Diabetes,8.6
+2017,Hyperlipidaemia,33.6
+2017,Obesity,8.7
+2017,Daily Smoking,12
