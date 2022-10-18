@@ -27,22 +27,22 @@ const HealthStats = () => {
         </div>
         <p className="pt-8 px-5 text-gray-600 font-['Rubik']">
           <Link
-            to="/Home/DashboardCancers"
-            className={`${location.pathname === "/Home" ? 'underline' : location.pathname === "/Home/DashboardCancers" ? 'underline' : ''}`}>
+            to="/DashboardCancers"
+            className={`${location.pathname === "/" ? 'underline' : location.pathname === "/DashboardCancers" ? 'underline' : ''}`}>
             Cancers
           </Link>
         </p>
         <p className="pt-8 px-5 text-gray-600 font-['Rubik']">
           <Link
-            to="/Home/DashboardHypertension"
-            className={`${location.pathname === "/Home/DashboardHypertension" ? 'underline' : ''}`}>
+            to="/DashboardHypertension"
+            className={`${location.pathname === "/DashboardHypertension" ? 'underline' : ''}`}>
             Hypertension
           </Link>
         </p>
         <p className="pt-8 px-5 text-gray-600 font-['Rubik']">
           <Link
-            to="/Home/DashboardDALYs"
-            className={`${location.pathname === "/Home/DashboardDALYs" ? 'underline' : ''}`}>
+            to="/DashboardDALYs"
+            className={`${location.pathname === "/DashboardDALYs" ? 'underline' : ''}`}>
             DALYs
           </Link>
         </p>

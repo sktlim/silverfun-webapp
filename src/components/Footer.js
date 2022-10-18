@@ -20,8 +20,8 @@ const Footer = () => {
               HOME
             </div>
             <div className={`flex flex-col`}>
-              <Link to="/Home" className={`pb-2`}>Home</Link>
-              <Link to="/Home" className={`pb-2`}>Health Statistics</Link>
+              <Link to="/" className={`pb-2`}>Home</Link>
+              <Link to="/" className={`pb-2`}>Health Statistics</Link>
             </div>
           </div>
           <div className={`flex flex-col items-left px-5`}>
