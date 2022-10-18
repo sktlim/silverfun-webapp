@@ -10,7 +10,7 @@ const ActivitiesPopup = () => {
         <img src={ActivityPinLarge} className="p-2" alt="activity" />
       </div>
       <div className="flex justify-center mb-5">
-        <Button classNames="ml-0 py-2 bg-blue-300 drop-shadow-none w-min" text="Activities" onClickHandler={event =>  window.location.href='/Activities'}/>
+        <Button classNames="ml-0 py-2 bg-blue-300 drop-shadow-none w-min text-lg" text="Activities" onClickHandler={event =>  window.location.href='/Activities'}/>
       </div>
       <p className="text-sm text-gray-600 text-center">Click to find out more about fun and enriching activities around you!</p>
     </div>
