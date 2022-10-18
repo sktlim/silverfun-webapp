@@ -17,8 +17,8 @@ const Header = () => {
       <Link to="/"><img src={Logo} className="h-13 p-5 px-10" alt="silver fun logo" /></Link>
       <div className={`flex items-center text-lg font-["Rubik"] px-10 z-0`}>
         <Link
-          to="/Home"
-          className={`p-8 + ${window.location.pathname === "/Home" ? 'underline' : ''}`}>
+          to="/"
+          className={`p-8 + ${window.location.pathname === "/" ? 'underline' : ''}`}>
           HOME
         </Link>
         <Link
