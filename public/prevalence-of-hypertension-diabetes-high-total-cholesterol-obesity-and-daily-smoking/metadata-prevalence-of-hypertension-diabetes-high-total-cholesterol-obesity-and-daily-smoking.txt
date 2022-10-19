@@ -1,0 +1,94 @@
+# Metadata for Prevalence of Hypertension, Diabetes, High Total Cholesterol, Obesity and Daily Smoking
+---
+Identifier: 'daa5a212-c412-4d5d-a20d-30ac4397e916'
+Name: 'prevalence-of-hypertension-diabetes-high-total-cholesterol-obesity-and-daily-smoking'
+Title: 'Prevalence of Hypertension, Diabetes, High Total Cholesterol, Obesity and
+  Daily Smoking'
+Description:
+  - 'Prevalence of hypertension, diabetes, high total cholesterol, obesity and daily
+    smoking among Singapore residents aged 18 to 69 years.'
+  - ''
+  - 'Definitions:'
+  - ''
+  - '* Hypertension: ≥ 140/90 mmHg'
+  - ''
+  - '* Diabetes: 2-hour plasma glucose during an oral glucose tolerance test ≥ 11.1
+    mmol/l'
+  - ''
+  - '* High Total Cholesterol: Total cholesterol ≥ 6.2 mmol/l'
+  - ''
+  - '* Obesity: BMI ≥ 30kg/m2'
+  - ''
+  - '* Daily Smoking: Smokes cigarettes at least once a day'
+  - ''
+  - 'Note: Data is collected every 6 years'
+Topics:
+  - 'Health'
+Keywords:
+  - 'Diseases'
+  - 'Healthcare'
+  - 'Obesity'
+  - 'Smoking'
+Publisher:
+  Name: 'Ministry of Health'
+  Admin 1:
+    Name: 'Erica Ong'
+    Department: 'Data Analytics Division'
+    Email: 'Erica_ONG@moh.gov.sg'
+  Admin 2:
+    Name: 'Tan Le Yi'
+    Department: 'Data Analytics Division'
+    Email: 'TAN_Le_Yi@moh.gov.sg'
+Sources:
+  - 'Ministry of Health'
+License: 'https://data.gov.sg/open-data-licence'
+Frequency: 'Annual'
+Coverage: '1992-01-01 to 2017-12-31'
+Last Updated: '2021-10-29T04:34:41.628718'
+Resources:
+  -
+    Identifier: 'c5f26f19-b6aa-4f4f-ae5b-ee62d840f8e7'
+    Title: 'Prevalence of Hypertension, Diabetes, High Total Cholesterol, Obesity
+      and Daily Smoking'
+    Url: 'https://storage.data.gov.sg/prevalence-of-hypertension-diabetes-high-total-cholesterol-obesity-and-daily-smoking/resources/prevalence-of-hypertension-diabetes-high-total-cholesterol-obesity-and-daily-smoking-2019-10-31T07-03-37Z.csv'
+    Format: 'CSV'
+    Coverage: '1992-01-01 to 2017-12-31'
+    Description:
+      - 'Prevalence of hypertension, diabetes, high total cholesterol, obesity and
+        daily smoking among Singapore residents aged 18 to 69 years.'
+      - ''
+      - 'Definitions:'
+      - ''
+      - '* Hypertension: ≥ 140/90 mmHg'
+      - ''
+      - '* Diabetes: Fasting plasma glucose ≥ 6.9 mmol/l'
+      - ''
+      - '* Hyperlipidaemia: LDL-Cholesterol ≥ 4.1 mmol/l'
+      - ''
+      - '* Obesity: BMI ≥ 30kg/m2'
+      - ''
+      - '* Daily Smoking: Smokes cigarettes at least once a day'
+      - ''
+      - '* na - not available'
+    Last Updated: '2019-10-31T07:03:37.864778'
+    Schema:
+      -
+        Name: 'year'
+        Title: 'Year'
+        Type: 'datetime'
+        Sub Type: 'year'
+        Format: 'YYYY'
+      -
+        Name: 'disease'
+        Title: 'Disease'
+        Type: 'text'
+        Sub Type: 'general'
+      -
+        Name: 'prevalence_rate'
+        Title: 'Prevalence rate'
+        Type: 'numeric'
+        Sub Type: 'percentage'
+        Description:
+          - 'Percentages are expressed as a value over 100, i.e. "100" represents
+            100%'
+          - '"na" : Data not available or not applicable'
