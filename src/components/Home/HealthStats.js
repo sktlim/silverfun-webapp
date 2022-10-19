@@ -2,8 +2,8 @@ import React from "react";
 import searchIcon from "../../assets/icons/search.svg"
 import { Link } from "react-router-dom";
 import Cancers from "./Cancers";
-import DALYs from "./DALYs";
 import Hypertension from "./Hypertension";
+import DALYs from "./DALYs";
 import {
   BrowserRouter as Router,
   Routes,
@@ -27,37 +27,40 @@ const HealthStats = () => {
         </div>
         <p className="pt-8 px-5 text-gray-600 font-['Rubik']">
           <Link
-            to="/Home/DashboardCancers"
-            className={`${location.pathname === "/" ? 'underline' : location.pathname === "/Home/DashboardCancers" ? 'underline' : ''}`}>
+            to="/DashboardCancers"
+            className={`${location.pathname === "/" ? 'underline' : location.pathname === "/DashboardCancers" ? 'underline' : ''}`}>
             Cancers
           </Link>
         </p>
         <p className="pt-8 px-5 text-gray-600 font-['Rubik']">
           <Link
-            to="/Home/DashboardHypertension"
-            className={`${location.pathname === "/Home/DashboardHypertension" ? 'underline' : ''}`}>
+            to="/DashboardHypertension"
+            className={`${location.pathname === "/DashboardHypertension" ? 'underline' : ''}`}>
             Hypertension
           </Link>
         </p>
         <p className="pt-8 px-5 text-gray-600 font-['Rubik']">
           <Link
-            to="/Home/DashboardDALYs"
-            className={`${location.pathname === "/Home/DashboardDALYs" ? 'underline' : ''}`}>
+            to="/DashboardDALYs"
+            className={`${location.pathname === "/DashboardDALYs" ? 'underline' : ''}`}>
             DALYs
           </Link>
         </p>
       </div>
-      <div className="w-full h-min">
+      <div className="w-full flex flex-col justify-center">
         <h2 className="p-10 text-center text-yellow">Health Statistics</h2>
-        <div>
-          <Routes>
-            <Route path='/' element={<Cancers />} />
-            <Route path='/DashboardCancers' element={<Cancers />} />
-            <Route path='/DashboardHypertension' element={<Hypertension />} />
-            <Route path='/DashboardDALYs' element={<DALYs />} />
-          </Routes>
+        <div className="w-full h-min">
+          <div>
+            <Routes>
+              <Route path='/' element={<Cancers />} />
+              <Route path='/DashboardCancers' element={<Cancers />} />
+              <Route path='/DashboardHypertension' element={<Hypertension />} />
+              <Route path='/DashboardDALYs' element={<DALYs />} />
+            </Routes>
+          </div>
         </div>
       </div>
+
     </div>
   );
 };

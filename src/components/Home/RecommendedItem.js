@@ -7,9 +7,9 @@ import elderlyIcon from "../../assets/icons/elderly.svg"
 import hospitalIcon from "../../assets/icons/hospital.svg"
 import informationIcon from "../../assets/icons/Information.svg"
 
-const RecommendedItem = ({ timing, title, description, type, pic }) => {
+const RecommendedItem = ({ timing, title, description, type, pic, onClickHandler }) => {
   return (
-    <div className="relative h-min w-1/5 bg-blue-100 rounded ">
+    <div className="relative h-min w-1/5 bg-blue-100 rounded hover:scale-105 transition-all duration-150 ease-linear " onClick={onClickHandler}>
       <div className="absolute h-min w-full flex justify-end">
         <div className="bg-blue-700 w-auto text-white px-3 py-2 flex">
           <img src={busIcon} className="pr-2" alt="bus icon" />

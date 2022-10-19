@@ -4,13 +4,14 @@ import Coronavirus from "../assets/icons/Coronavirus.png";
 import Pharmacy from "../assets/icons/Hospital 3.png";
 import Elderly from "../assets/icons/Grandfather.svg";
 import Boxes from  "../components/Boxes";
+import Footer from "../components/Footer";
 
 
 function Healthcare() {
     return (
     <div>
     <Header />
-    <div className = "flex h-screen">
+    <div className = "flex h-min">
         <p className = "text-center m-auto">
           <h1>Healthcare Services</h1>
           <body>Find out more about healthcare services you might need around <br/>you, and other necessary information like details on how to make appointments!</body>
@@ -78,6 +79,7 @@ function Healthcare() {
           <br/>
         </p>
       </div>
+      <Footer />
       </div>
     );
   }
