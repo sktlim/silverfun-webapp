@@ -15,16 +15,20 @@ import Activities from './pages/Activities';
 import ActivityDetails from './pages/ActivityDetails';
 import Notifications from './pages/Notifications';
 import Preferences from './pages/Preferences';
+import GMaps from './components/GMaps';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
 } from "react-router-dom";
+import { AuthProvider } from './AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-  <Routes>
+    <AuthProvider>
+      <Routes>
+        <Route path='/' element={<App />} />
         <Route path='/*' element={<Home />} />
         <Route path='/AboutUs' element={<AboutUs />} />
         {/* <Route path='/Home/*' element={<Home />} /> */}
@@ -38,6 +42,7 @@ root.render(
         <Route path='/Notifications' element={<Notifications />} />
         <Route path='/Preferences' element={<Preferences />} />
       </Routes>
+    </AuthProvider>
   </BrowserRouter>
 );
 

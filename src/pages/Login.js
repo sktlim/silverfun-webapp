@@ -4,25 +4,31 @@ import { useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { TextField } from '@mui/material';
-import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase-config";
+// import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+// import { auth } from "../firebase-config";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../AuthContext"
+
 
 
 function Login() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const navigate = useNavigate();
+  const { login } = useAuth()
 
-  const login = async () => {
+
+  // const [user,setUser] = useState({});
+
+
+  const signin = async () => {
     try {
-      const user = await signInWithEmailAndPassword(
-        auth,
+      const user = await login(
         loginEmail,
         loginPassword
       );
       console.log(user);
-      navigate("/Home");
+      navigate("/EditProfile");
     } catch (error) {
       console.log(error.message);
     }
@@ -63,7 +69,7 @@ function Login() {
                 setLoginPassword(event.target.value);
               }}/>
             </div>
-            <button class=" mt-10 bg-white h-15 w-full rounded-lg align-middle items-center justify-center text-2xl rounded-md  hover:scale-105 transition-all duration-150 ease-linear drop-shadow-lg" onClick={login}>Log in</button>
+            <button class=" mt-10 bg-white h-15 w-full rounded-lg align-middle items-center justify-center text-2xl rounded-md  hover:scale-105 transition-all duration-150 ease-linear drop-shadow-lg" onClick={signin}>Log in</button>
           </div>
         </div>
       </div>

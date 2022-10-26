@@ -9,15 +9,26 @@ import ActivitiesPopup from "../components/Home/ActivitiesPopup";
 import HealthcarePopup from "../components/Home/HealthcarePopup";
 import EmptyPopup from "../components/Home/EmptyPopup";
 import ActivityPin from "../assets/icons/ActivityPin.svg"
-import HealthcarePin from "../assets/icons/HealthcarePin.svg"
+import HealthcarePin from "../assets/icons/HealthcarePin.svg";
+import GMaps from "../components/GMaps";
+import React from "react";
 import PlaceholderMap from "../assets/images/SGmap.svg"
 import ActivityFlags from "../assets/images/ActivitesIcons.svg"
 import HealthcareFlags from "../assets/images/HealthcareIcons.svg"
 import React, { useState } from 'react'
 
-
 function Home() {
+  const url1 = 'https://storage.googleapis.com/swe-silverfun-app.appspot.com/gyms-sg-kml.kml';
+  const url2 = 'https://storage.googleapis.com/swe-silverfun-app.appspot.com/ELDERCARE.kml';
+  const url3 = 'https://storage.googleapis.com/swe-silverfun-app.appspot.com/AED_Locations.kml';
+
+  const [state1, setState1] = React.useState(true);
+  const [state2, setState2] = React.useState(false);
+  const [state3, setState3] = React.useState(false);
+
   const [mapFilter, setMapFilter] = useState("none");
+  const ActivityFilter = true;
+  const HealthcareFilter = false;
   return (
     <div>
       <div className="relative bg-blue-100 h-min pb-20">
@@ -38,11 +49,8 @@ function Home() {
           </div>
         </div>
         <div className="mt-20 flex mx-20 justify-around">
-          <div className="relative w-4/6 text-center">
-            <img className="h-full" src={PlaceholderMap} />
-            {mapFilter === "Activities" ? <img className="left-10 top-8 absolute" src={ActivityFlags} />
-              : mapFilter === "Healthcare" ? <img className="left-24 top-10 absolute" src={HealthcareFlags} />
-                : <div />}
+          <div className="w-4/6 text-center bg-white">
+            <GMaps url1={url1} url2={url2} url3={url3} state1={state1} state2={state2} state3={state3} className="w-max-3xl" />
           </div>
           <div>
             <Button classNames={`bg-white mb-6 drop-shadow-none border border-black opacity-50 text-lg + ${mapFilter === "Activities" ? 'opacity-100 ' : ''}`} icon={ActivityPin} text="  Activities" onClickHandler={() => setMapFilter(mapFilter === "Activities" ? "none" : "Activities")} />
@@ -52,7 +60,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="h-min w-full ">
+      <div className="h-min w-full mt-60">
         <h2 className="p-10 text-center italic">Recommended For <text className="text-yellow">You</text>
         </h2>
         <div className="flex justify-evenly">
