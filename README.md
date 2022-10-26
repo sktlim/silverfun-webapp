@@ -5,6 +5,9 @@ A one stop elderly care application for caregivers who want to find information 
 
 ## Links
 
+SRS Document
+- [SRS](https://docs.google.com/document/d/1_GwrTvWk-4McNeNmLYqrOse6oxDh4LEY/edit?usp=sharing&ouid=112519818405225364103&rtpof=true&sd=true)
+
 ### Lab 3 Deliverables
 - [Complete Use Case Model](https://docs.google.com/document/d/1LKGTLx3DJ5sJpblTb1tU9LuIrp3j-6oEV3gkn_CZhkc/edit?usp=sharing)
 - [Updated Sequence Diagram](https://drive.google.com/file/d/1uQMcQt2IjZ2G3-I-DqkljpZo4kFpbdhv/view?usp=sharing)
