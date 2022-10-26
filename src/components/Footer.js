@@ -19,13 +19,13 @@ const Footer = () => {
             <div className={`text-lg font-["RubikBold"] pb-3 text-black`}>
               HOME
             </div>
-            <div className={`flex flex-col text lg`}>
-              <Link to="/Home" className={`pb-2`}>Home</Link>
-              <Link to="/Home" className={`pb-2`}>Health Statistics</Link>
+            <div className={`flex flex-col`}>
+              <Link to="/" className={`pb-2`}>Home</Link>
+              <Link to="/" className={`pb-2`}>Health Statistics</Link>
             </div>
           </div>
           <div className={`flex flex-col items-left px-5`}>
-            <div className={`text-xl pb-3 font-["RubikBold"] text-black`}>
+            <div className={`text-lg pb-3 font-["RubikBold"] text-black`}>
               ACTIVITIES
             </div>
             <div className={`flex flex-col`}>
@@ -35,7 +35,7 @@ const Footer = () => {
             </div>
           </div>
           <div className={`flex flex-col items-left px-5 `}>
-            <div className={`text-xl pb-3 font-["RubikBold"] text-black`}>
+            <div className={`text-lg pb-3 font-["RubikBold"] text-black`}>
               HEALTHCARE SERVICES
             </div>
             <div className={`flex flex-col`}>
@@ -45,7 +45,7 @@ const Footer = () => {
             </div>
           </div>
           <div className={`flex flex-col items-left px-5`}>
-            <div className={`text-xl pb-3 font-["RubikBold"] text-black`}>
+            <div className={`text-lg pb-3 font-["RubikBold"] text-black`}>
               ABOUT US
             </div>
             <div className={`flex flex-col`}>
