@@ -36,7 +36,7 @@ const HealthStats = () => {
           <Link
             to="/DashboardHypertension"
             className={`${location.pathname === "/DashboardHypertension" ? 'underline' : ''}`}>
-            Hypertension
+            Common Diseases
           </Link>
         </p>
         <p className="pt-8 px-5 text-gray-600 font-['Rubik']">
