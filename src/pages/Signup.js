@@ -3,20 +3,25 @@ import { useState } from "react";
 import Header from "../components/Header";
 import { TextField } from '@mui/material';
 import Footer from "../components/Footer";
-import {
-  createUserWithEmailAndPassword,
-} from "firebase/auth";
-import { auth } from "../firebase-config";
 import { Alert } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../AuthContext"
+
 
 function Signup() {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [cfmPassword, cfmRegisteredPassword] = useState("");
   const [error, setError] = useState("");
+  const { signup } = useAuth()
+
   const navigate = useNavigate();
 
+  // const [user,setUser] = useState({});
+
+  // onAuthStateChanged(auth, (currentUser) =>{
+  //   setUser(currentUser);
+  // })
 
   const register = async () => {
     if (registerPassword !== cfmPassword) {
@@ -24,8 +29,7 @@ function Signup() {
     }
 
     try {
-      const user = await createUserWithEmailAndPassword(
-        auth,
+      const user = await signup(
         registerEmail,
         registerPassword
       );
@@ -53,7 +57,7 @@ function Signup() {
 
       <div className="flex justify-evenly mb-20">
         <div className="max-w-4xl mx-10 ">
-          <img src={require('../assets/signup-page-art.png')} />
+          <img src={require('../assets/signup-page-art.png')} alt="" />
         </div>
         <div className="flex w-1/3">
           <div className="container mx-20 bg-blue-100 w-full rounded-xl shadow p-8 m-10">

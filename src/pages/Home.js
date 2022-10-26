@@ -8,11 +8,21 @@ import Button from "../components/Button";
 import ActivitiesPopup from "../components/Home/ActivitiesPopup";
 import HealthcarePopup from "../components/Home/HealthcarePopup";
 import ActivityPin from "../assets/icons/ActivityPin.svg"
-import HealthcarePin from "../assets/icons/HealthcarePin.svg"
-import React, { useState } from 'react'
+import HealthcarePin from "../assets/icons/HealthcarePin.svg";
+import GMaps from "../components/GMaps";
+import React from "react";
 
 
 function Home() {
+  const url1 = 'https://storage.googleapis.com/swe-silverfun-app.appspot.com/gyms-sg-kml.kml';
+  const url2 = 'https://storage.googleapis.com/swe-silverfun-app.appspot.com/ELDERCARE.kml';
+  const url3 = 'https://storage.googleapis.com/swe-silverfun-app.appspot.com/AED_Locations.kml';
+
+  const [state1, setState1] = React.useState(true);
+  const [state2, setState2] = React.useState(false);
+  const [state3, setState3] = React.useState(false);
+
+
   const ActivityFilter = true;
   const HealthcareFilter = false;
   return (
@@ -36,7 +46,7 @@ function Home() {
         </div>
         <div className="mt-20 flex mx-20 justify-around">
           <div className="w-4/6 text-center bg-white">
-            map
+            <GMaps url1={url1} url2={url2} url3={url3} state1={state1} state2={state2} state3={state3} className="w-max-3xl" />
           </div>
           <div>
             <Button classNames="bg-white mb-6 drop-shadow-none border border-black opacity-50" icon={ActivityPin} text="Activities" />
@@ -47,7 +57,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="h-min w-full ">
+      <div className="h-min w-full mt-60">
         <h2 className="p-10 text-center italic">Recommended For <text className="text-yellow">You</text>
         </h2>
         <div className="flex justify-evenly">

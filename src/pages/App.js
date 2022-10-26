@@ -43,7 +43,7 @@ function App() {
           </nav>
           <nav className="p-2">
             <Link to="/AboutUs">About Us</Link> |{" "}
-            <Link to="/Edit Profile">Edit Profile</Link> |{" "}
+            <Link to="/EditProfile">Edit Profile</Link> |{" "}
             <Link to="/Notifications">Alerts and Notifications</Link> |{" "}
           </nav>
           <nav className="p-2">
