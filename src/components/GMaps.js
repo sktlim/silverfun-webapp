@@ -37,7 +37,6 @@ const center = {
     lat: 1.3521,
     lng: 103.8198,
 };
-//AIzaSyDRuC4x9-rJ_R5wInOjhliui7LAHGkuPJA
 export default function GMaps(url1, state1, url2, state2, url3, state3) {
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GMAPS_API_KEY,
