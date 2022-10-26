@@ -15,7 +15,10 @@ import ActivityFlags from "../assets/images/ActivitesIcons.svg"
 import HealthcareFlags from "../assets/images/HealthcareIcons.svg"
 import GMaps from "../components/GMaps";
 import React from "react";
-
+import PlaceholderMap from "../assets/images/SGmap.svg"
+import ActivityFlags from "../assets/images/ActivitesIcons.svg"
+import HealthcareFlags from "../assets/images/HealthcareIcons.svg"
+import React, { useState } from 'react'
 
 function Home() {
   const url1 = 'https://storage.googleapis.com/swe-silverfun-app.appspot.com/gyms-sg-kml.kml';
@@ -26,8 +29,9 @@ function Home() {
   const [state2, setState2] = React.useState(false);
   const [state3, setState3] = React.useState(false);
 
-
   const [mapFilter, setMapFilter] = useState("none");
+  const ActivityFilter = true;
+  const HealthcareFilter = false;
   return (
     <div>
       <div className="relative bg-blue-100 h-min pb-20">

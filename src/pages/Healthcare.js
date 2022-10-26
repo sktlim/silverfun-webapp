@@ -21,6 +21,7 @@ function Healthcare() {
 
   return (
     <div>
+
     <Header />
     <div className = "flex h-min">
         <p className = "text-center m-auto">
@@ -92,6 +93,7 @@ function Healthcare() {
           <br />
         </p>
       </div>
+
       <Footer />
       </div>
     );

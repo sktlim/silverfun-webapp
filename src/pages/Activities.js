@@ -7,6 +7,8 @@ import Boxes from "../components/Boxes";
 import Food from "../assets/icons/Food.png";
 import Footer from "../components/Footer";
 import GMaps from "../components/GMaps";
+import Footer from "../components/Footer";
+
 
 function Activities() {
   const url1 = String('https://storage.googleapis.com/swe-silverfun-app.appspot.com/gyms-sg-kml.kml');
@@ -93,6 +95,8 @@ function Activities() {
 
         </p>
       </div>
+
+      <Footer />
       </div>
     );
 
