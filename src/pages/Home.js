@@ -11,7 +11,6 @@ import EmptyPopup from "../components/Home/EmptyPopup";
 import ActivityPin from "../assets/icons/ActivityPin.svg"
 import HealthcarePin from "../assets/icons/HealthcarePin.svg";
 import GMaps from "../components/GMaps";
-import React from "react";
 import PlaceholderMap from "../assets/images/SGmap.svg"
 import ActivityFlags from "../assets/images/ActivitesIcons.svg"
 import HealthcareFlags from "../assets/images/HealthcareIcons.svg"

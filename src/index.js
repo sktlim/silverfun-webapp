@@ -28,7 +28,7 @@ root.render(
   <BrowserRouter>
     <AuthProvider>
       <Routes>
-        <Route path='/' element={<App />} />
+        {/* <Route path='/' element={<Home />} /> */}
         <Route path='/*' element={<Home />} />
         <Route path='/AboutUs' element={<AboutUs />} />
         {/* <Route path='/Home/*' element={<Home />} /> */}
