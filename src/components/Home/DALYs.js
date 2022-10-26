@@ -34,7 +34,7 @@ const DALYs = () => {
                                 "#EC5863",
                             ],
                             barThickness: 20,
-                            lineWidth : 0
+                            lineWidth: 0
                         },
                     ]
 
@@ -52,27 +52,28 @@ const DALYs = () => {
             <div className="">
                 {loading === true ? <div className="w-full flex justify-center text-center">loading...</div> :
                     <Bar
-                    data={data}
-                    options={{
-                        parsing: {
-                            xAxisKey: 'broad_cause_group',
-                            yAxisKey: 'percentage',
-                        },
-                        plugins: {
-                            title: {
-                                display: true,
-                                text: "Distribution of Disability-Adjusted Life Years by Broad Cause Group(2019)"
+                        data={data}
+                        options={{
+                            parsing: {
+                                xAxisKey: 'broad_cause_group',
+                                yAxisKey: 'percentage',
                             },
-                            legend: {
-                                display: true,
-                                position: "bottom"
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: "Distribution of Disability-Adjusted Life Years by Broad Cause Group (2019)"
+                                },
+                                legend: {
+                                    display: true,
+                                    position: "bottom"
+                                }
                             }
-                        }
-                    }}
-                />}
+                        }}
+                    />}
 
             </div>
-            <div className="bg-white w-full h-min rounded-xl my-10 py-5 px-10">
+            <p className="text-center pt-5">1 DALYs = loss of one year of full health</p>
+            <div className="bg-white w-full h-min rounded-xl mb-10 py-5 px-10">
                 <div className="flex justify-between items-center mb-5">
                     <h4 classNames="w-10">How to prevent musculoskeletal disorders</h4>
                     <Button classNames="text-lg" text="Schedule appointment" icon={HealthcarePin}></Button>
@@ -102,7 +103,7 @@ const DALYs = () => {
                 </div>
             </div>
         </div>
-        
+
     );
 };
 
