@@ -49,7 +49,7 @@ const DALYs = () => {
 
     return (
         <div className="mx-20 w-5/6">
-            <div className="">
+            <div className="relative w-[55vw]">
                 {loading === true ? <div className="w-full flex justify-center text-center">loading...</div> :
                     <Bar
                         data={data}
@@ -72,11 +72,11 @@ const DALYs = () => {
                     />}
 
             </div>
-            <p className="text-center pt-5">1 DALYs = loss of one year of full health</p>
+            <p className="text-center py-5 italic">1 DALYs = loss of one year of full health</p>
             <div className="bg-white w-full h-min rounded-xl mb-10 py-5 px-10">
                 <div className="flex justify-between items-center mb-5">
                     <h4 classNames="w-10">How to prevent musculoskeletal disorders</h4>
-                    <Button classNames="text-lg" text="Schedule appointment" icon={HealthcarePin}></Button>
+                    <Button classNames="text-lg" text="Schedule appointment" icon={HealthcarePin} onClickHandler={event => window.open("https://www.nuh.com.sg/patients-visitors/Appointments/Pages/default.aspx")}></Button>
                 </div>
                 <div className="flex justify-between">
                     <div className="bg-yellow mx-10 h-78 rounded-xl p-5">

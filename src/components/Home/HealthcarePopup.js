@@ -5,7 +5,7 @@ import HealthcarePinLarge from "../../assets/icons/HealthcarePinLarge.svg"
 
 const HealthcarePopup = () => {
   return (
-    <div className="bg-white w-72 h-72 ml-4 shadow-lg p-5">
+    <div className="bg-white w-72 h-min ml-4 shadow-lg p-5">
       <div className="flex justify-center mt-2 mb-5">
         <img src={HealthcarePinLarge} className="p-2" alt="Healthcare" />
       </div>

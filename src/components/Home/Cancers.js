@@ -26,17 +26,17 @@ const Cancers = () => {
                     datasets: [
                         {
                             label: "female",
-                            data: usefulData.result.records.map((result, i) => (i>19)&&(result.gender=="female")?result: {}),
+                            data: usefulData.result.records.map((result, i) => (i > 19) && (result.gender == "female") ? result : {}),
                             backgroundColor: [
                                 "#EC5863",
 
                             ],
                             barThickness: 20,
-                            lineWidth : 0
+                            lineWidth: 0
                         },
                         {
                             label: "male",
-                            data: usefulData.result.records.map((result, i) => (i>19)&&(result.gender=="male")?result: {}),
+                            data: usefulData.result.records.map((result, i) => (i > 19) && (result.gender == "male") ? result : {}),
                             backgroundColor: [
                                 "#39619B",
                                 // "#39619B",
@@ -48,7 +48,7 @@ const Cancers = () => {
 
                             ],
                             barThickness: 20,
-                            lineWidth : 0
+                            lineWidth: 0
                         },
                     ]
 
@@ -63,9 +63,10 @@ const Cancers = () => {
 
     return (
         <div className="mx-20 w-5/6">
-            <div className="">
+            <div className="relative w-[55vw]">
                 {loading === true ? <div className="w-full flex justify-center text-center">loading...</div> :
                     <Bar
+                        className={`w-max`}
                         data={data}
                         options={{
                             parsing: {
@@ -89,7 +90,7 @@ const Cancers = () => {
             <div className="bg-white w-full h-min rounded-xl my-10 py-5 px-10">
                 <div className="flex justify-between items-center mb-5">
                     <h4>When should you go for cancer check-up?</h4>
-                    <Button classNames="text-lg" text="Schedule appointment" icon={HealthcarePin}></Button>
+                    <Button classNames="text-lg" text="Schedule appointment" icon={HealthcarePin} onClickHandler={event => window.open("https://www.nuh.com.sg/patients-visitors/Appointments/Pages/default.aspx")}></Button>
                 </div>
                 <div className="flex justify-between">
                     <div className="bg-yellow mx-10 h-78 rounded-xl p-5">
