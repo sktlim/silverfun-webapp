@@ -1,16 +1,113 @@
 import Header from "../components/Header";
-import Bus from"../assets/icons/Bus.png";
 import Coronavirus from "../assets/icons/Coronavirus.png";
 import Pharmacy from "../assets/icons/Hospital 3.png";
 import Elderly from "../assets/icons/Grandfather.svg";
 import Boxes from  "../components/Boxes";
 import Footer from "../components/Footer";
+import AED from "../components/AED";
+import React, { Component } from "react";
+import { pharmacy } from "../assets/geojson/pharmacy";
+import { eldercareServices } from "../assets/geojson/eldercareServices";
+import { AEDdata } from "../assets/geojson/AEDdata";
 
 
-function Healthcare() {
+export default class Healthcare extends Component {
+
+  constructor(){
+    super()
+    this.state = {
+      loading: false,
+      pharmacy: {},
+      eldercare: {},
+      AEDdata: {}
+    }
+  }
+
+  componentDidMount(){
+    // POST pharmacy
+    const pharmacyData = new Blob([JSON.stringify(pharmacy, null, 2)], {
+      type: "application/json",});
+    
+    const pharmacyform = new FormData();
+    pharmacyform.append("data", pharmacyData, "libraries.geojson");
+    pharmacyform.append("lat","1.3483");
+    pharmacyform.append("lng","103.6831");
+
+    const pharmrequest = async() => {
+      const pharmoptions = {
+        method: "POST",
+        body: pharmacyform,
+      }
+      const response = await fetch("https://silverfun-backend.limsui.repl.co", pharmoptions);
+      const pharmacylocations = await response.json();
+      console.log(pharmacylocations);
+      this.setState({
+        loading: false,
+        pharmacy: pharmacylocations
+      })
+    }
+
+    // POST eldercare services
+    const eldercareData = new Blob([JSON.stringify(eldercareServices, null, 2)], {
+      type: "application/json",});
+    
+    const eldercareform = new FormData();
+    eldercareform.append("data", eldercareData, "libraries.geojson");
+    eldercareform.append("lat","1.3483");
+    eldercareform.append("lng","103.6831");
+
+    const eldercarerequest = async() => {
+      const eldercareoptions = {
+        method: "POST",
+        body: eldercareform,
+      }
+      const response = await fetch("https://silverfun-backend.limsui.repl.co", eldercareoptions);
+      const eldercarelocations = await response.json();
+      console.log(eldercarelocations);
+      this.setState({
+        loading: false,
+        eldercare: eldercarelocations
+      })
+    }
+
+    // POST aed 
+    const aedData = new Blob([JSON.stringify(AEDdata, null, 2)], {
+      type: "application/json",});
+    
+    const aedform = new FormData();
+    aedform.append("data", aedData, "libraries.geojson");
+    aedform.append("lat","1.3483");
+    aedform.append("lng","103.6831");
+
+    const aedrequest = async() => {
+      const aedoptions = {
+        method: "POST",
+        body: aedform,
+      }
+      const response = await fetch("https://silverfun-backend.limsui.repl.co", aedoptions);
+      const aedlocations = await response.json();
+      console.log(aedlocations);
+      this.setState({
+        loading: false,
+        AEDdata: aedlocations
+      })
+    }
+  
+  pharmrequest();
+  eldercarerequest();
+  aedrequest();
+  }
+
+  render(){
+    
     return (
     <div>
     <Header />
+
+
+    <div className="absolute w-full flex justify-end">
+          <AED />
+    </div>
     <div className = "flex h-min">
         <p className = "text-center m-auto">
           <h1>Healthcare Services</h1>
@@ -83,4 +180,4 @@ function Healthcare() {
       </div>
     );
   }
-  export default Healthcare;
+}

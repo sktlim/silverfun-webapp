@@ -10,6 +10,8 @@ import {Link} from "react-router-dom";
 import Back from "../assets/icons/Back.png";
 import React, {useState} from "react";
 import PreferenceButton from "../components/PreferenceButton";
+import DoneButton from "../components/DoneButton";
+import PreferenceBlock from "../components/PreferenceBlock";
 
 
 
@@ -31,28 +33,11 @@ function Preferences(){
           
           
             
-            <div class = "flex flex-row justify-center justify-between">
-
-              <PreferenceButton image = {Exercising} text = "Exercising"/>
-              <PreferenceButton image = {Reading} text = "Reading"/>
-              <PreferenceButton image = {Sports} text = "Sports"/>
-
-            </div>
-
-            <div class = "flex flex-row justify-center justify-between">
-
-              <PreferenceButton image = {Health} text = "Heath"/>
-              <PreferenceButton image = {Eating} text = "Eating"/>
-              <PreferenceButton image = {Covid} text = "Covid-19 Information"/>
-            </div>
+            <PreferenceBlock/>
 
           <br/>
-          
-          <Link to="/Home">
-            <button class = "align-middle bg-yellow w-full text-3xl hover:scale-105 rounded-md "> Done </button>
-          </Link>
-          
 
+          
           </p>
         </div>      
       
