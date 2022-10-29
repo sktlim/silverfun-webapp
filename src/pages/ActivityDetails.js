@@ -1,8 +1,11 @@
 import Header from "../components/Header";
 import React from "react"
-import { Link } from "react-router-dom";
+import { Link , useLocation} from "react-router-dom";
 
 function ActivityDetails() {
+
+  const location = useLocation();
+  console.log(location)
     return (
       <div>
       <Header />
@@ -14,7 +17,7 @@ function ActivityDetails() {
           alt=""
         /></Link>
         <h1 className = "text-left mb-5">
-          <text className="text-blue-700">Jurong West Public Library</text>
+          <text className="text-blue-700">{location.state.name}</text>
         </h1>
       </div>
 

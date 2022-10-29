@@ -1,5 +1,5 @@
 import Header from "../components/Header";
-import React from "react";
+import React, { useEffect } from "react";
 import Squats from "../assets/icons/Squats.png";
 import Book from "../assets/icons/Book.png";
 import Bus from "../assets/icons/Bus.png";
@@ -7,6 +7,12 @@ import Boxes from "../components/Boxes";
 import Food from "../assets/icons/Food.png";
 import GMaps from "../components/GMaps";
 import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
+import { library } from "../assets/geoJSON/libraries";
+import { hawker } from "../assets/geoJSON/hawker"
+import { gyms } from "../assets/geoJSON/gyms"
+import axios from 'axios';
+
 
 
 function Activities() {
@@ -26,19 +32,141 @@ function Activities() {
     state2: false,
     state3: true
   }
+
+  const [filter, setFilter] = React.useState("library");
+  const [isLoading, setLoading] = React.useState(true)
+
+  const [topLibraries, setTopLibraries] = React.useState(null);
+  const [topHawkers, setTopHawkers] = React.useState(null);
+  const [topFitness, setTopFitness] = React.useState(null);
+  const [display, setDisplay] = React.useState(null);
+
+  //library
+  const libraryData = new Blob([JSON.stringify(library, null, 2)], {
+    type: "application/json",
+  });
+
+  const libform = new FormData();
+  libform.append("data", libraryData, "libraries.geojson");
+  libform.append("lat", "1.3483");
+  libform.append("lng", "103.6831");
+
+  const liboptions = {
+    method: "POST",
+    body: libform,
+  }
+
+  //hawker
+  const hawkerData = new Blob([JSON.stringify(hawker, null, 2)], {
+    type: "application/json",
+  });
+
+  const hawkerForm = new FormData();
+  hawkerForm.append("data", hawkerData, "libraries.geojson");
+  hawkerForm.append("lat", "1.3483");
+  hawkerForm.append("lng", "103.6831");
+
+  const hawkeroptions = {
+    method: "POST",
+    body: hawkerForm,
+  }
+
+  //fitness
+  const fitnessData = new Blob([JSON.stringify(gyms, null, 2)], {
+    type: "application/json",
+  });
+
+  const fitnessForm = new FormData();
+  fitnessForm.append("data", fitnessData, "libraries.geojson");
+  fitnessForm.append("lat", "1.3483");
+  fitnessForm.append("lng", "103.6831");
+
+  const fitnessoptions = {
+    method: "POST",
+    body: fitnessForm,
+  }
+
+  //library
+  useEffect(() => {
+    axios.post("https://silverfun-backend.limsui.repl.co", libform, liboptions)
+      .then(response => {
+        console.log("libraries");
+        // console.log(libraryData)
+        // console.log(response.data);
+        setTopLibraries(
+          [[response.data[0].properties.Name, response.data[0].properties.ADDRESSSTREETNAME],
+          [response.data[1].properties.Name, response.data[1].properties.ADDRESSSTREETNAME],
+          [response.data[2].properties.Name, response.data[2].properties.ADDRESSSTREETNAME],
+          [response.data[3].properties.Name, response.data[3].properties.ADDRESSSTREETNAME],
+          [response.data[4].properties.Name, response.data[4].properties.ADDRESSSTREETNAME]])
+        console.log(topLibraries);
+        setLoading(false)
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, [])
+
+  //hawker
+  // useEffect(() => {
+  //   axios.post("https://silverfun-backend.limsui.repl.co", hawkerForm, hawkeroptions)
+  //     .then(response => {
+  //       console.log("hawker");
+  //       console.log(response.data);
+  //       setTopHawkers(
+  //         [[response.data[0].properties.Name, response.data[0].properties.ADDRESSSTREETNAME],
+  //         [response.data[1].properties.Name, response.data[1].properties.ADDRESSSTREETNAME],
+  //         [response.data[2].properties.Name, response.data[2].properties.ADDRESSSTREETNAME],
+  //         [response.data[3].properties.Name, response.data[3].properties.ADDRESSSTREETNAME],
+  //         [response.data[4].properties.Name, response.data[4].properties.ADDRESSSTREETNAME]])
+  //       console.log(topHawkers);
+  //       setLoading(false)
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // },[])
+
+  //fitness
+
+  useEffect(() => {
+    axios.post("https://silverfun-backend.limsui.repl.co", fitnessForm, fitnessoptions)
+      .then(response => {
+        console.log("fitness");
+        console.log(response.data);
+        setTopFitness(
+          [[response.data[0].properties.Name, response.data[0].properties.ADDRESSSTREETNAME],
+          [response.data[1].properties.Name, response.data[1].properties.ADDRESSSTREETNAME],
+          [response.data[2].properties.Name, response.data[2].properties.ADDRESSSTREETNAME],
+          [response.data[3].properties.Name, response.data[3].properties.ADDRESSSTREETNAME],
+          [response.data[4].properties.Name, response.data[4].properties.ADDRESSSTREETNAME]])
+        console.log(topFitness);
+        setLoading(false)
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, [])
+
+
+  // useEffect(() => {
+  //   // Should not ever set state during rendering, so do this in useEffect instead.
+  //   setTopLibraries(allowedState);
+  // }, []);
+
   return (
     <div>
 
-    <Header />
-    <div className = "flex h-min">
-        <p className = "text-center m-auto ">
-          <h1 className = "mb-2">Activities</h1>
+      <Header />
+      <div className="flex h-min">
+        <p className="text-center m-auto ">
+          <h1 className="mb-2">Activities</h1>
           <body>Find out more about fun and enriching activities around you!</body>
 
           <br />
           <div className="w-max-3xl">
             <GMaps url1={url1} url2={url2} url3={url3} state1={state1} state2={state2} state3={state3} className="w-max-3xl" />
-          </div>          
+          </div>
           <br />
 
           {/* <div class="align middle">
@@ -75,19 +203,39 @@ function Activities() {
               </button>
             </div>
           </div>
+          {isLoading ? <div>Loading</div> : <div>
+            <br />
+            <Link to={"/ActivityDetails"}
+              state={{ name: topLibraries[0][0], address: topLibraries[0][1] }}
+            >
+              <Boxes icon={Book} text1={topLibraries[0][0]} text2={topLibraries[0][1]} time="20 Min"></Boxes>
+            </Link>
+            <br />
+            <Link to={"/ActivityDetails"}
+              state={{ name: topLibraries[1][0], address: topLibraries[1][1] }}
+            >
+              <Boxes icon={Book} text1={topLibraries[1][0]} text2={topLibraries[1][1]} time="23 Min"></Boxes></Link>
+            <br />
+            <Link to={"/ActivityDetails"}
+              state={{ name: topLibraries[2][0], address: topLibraries[2][1] }}
+            >
+              <Boxes icon={Book} text1={topLibraries[2][0]} text2={topLibraries[2][1]} time="25 Min"></Boxes>
+            </Link>
+            <br />
+            <Link to={"/ActivityDetails"}
+              state={{ name: topLibraries[3][0], address: topLibraries[3][1] }}
+            >
+              <Boxes icon={Book} text1={topLibraries[3][0]} text2={topLibraries[3][1]} time="25 Min"></Boxes></Link>
+            <br />
+            <Link to={"/ActivityDetails"}
+              state={{ name: topLibraries[4][0], address: topLibraries[4][1] }}
+            >
+              <Boxes icon={Book} text1={topLibraries[4][0]} text2={topLibraries[4][1]} time="25 Min"></Boxes>
+            </Link>
+            <br />
 
-          <div>
-            <br />
-            <Boxes icon={Food} text1="Jurong West Hawker Centre" text2="Jurong West Street 61" time="20 Min"></Boxes>
-            <br />
-            <Boxes icon={Squats} text1="Jurong West ActiveSG Sports Centre " text2="Jurong West Street 93" time="23 Min"></Boxes>
-            <br />
-            <Boxes icon={Book} text1="Jurong West Public Library" text2="Jurong West Central 3" time="25 Min"></Boxes>
-            <br />
-            <Boxes icon={Book} text1="Jurong West Public Library" text2="Jurong West Central 3" time="25 Min"></Boxes>
-            <br />
+          </div>}
 
-          </div>
 
           <body> 1 of 5 </body>
           <button class="text-sm hover:scale-105 "> Next {'>'} </button>
@@ -97,8 +245,8 @@ function Activities() {
       </div>
 
       <Footer />
-      </div>
-    );
+    </div>
+  );
 
 }
 export default Activities;
