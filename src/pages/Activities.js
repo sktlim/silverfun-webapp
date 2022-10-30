@@ -40,11 +40,11 @@ function Activities() {
   const [topLibraries, setTopLibraries] = React.useState(null);
 
   const topHawkers = ([
-  ["Boon Lay Place Market and Food Village", "221A Boon Lay Pl, Singapore 641221", "deliveroo.com.sg", ""],
-  ["Jurong West 505 Market & Food Centre", "505 Jurong West Street 52, Singapore 640505", "deliveroo.com.sg", ""],
-  ["Taman Jurong Food Centre", "3 Yung Sheng Rd, Singapore 618499", "foodpanda.sg", ""],
-  ["Bukit Batok Street 11 Food", "155 Bukit Batok Street 11, #01-01, Singapore 650155", "foodpanda.sg", ""],
-  ["Meng Soon Huat Food Centre", "359 Bukit Batok Street 31, #01-401 Block 359, Singapore 650359", "foodpanda.sg", ""], Food, "hawker"])
+  ["Boon Lay Place Market and Food Village", "221A Boon Lay Pl, Singapore 641221", "deliveroo.com.sg", "https://mustsharenews.com/wp-content/uploads/2021/07/boon-lay-place-food-village-1.jpg"],
+  ["Jurong West 505 Market & Food Centre", "505 Jurong West Street 52, Singapore 640505", "deliveroo.com.sg", "https://findd.sg/custom/domain_1/image_files/sitemgr_photo_1800.jpg"],
+  ["Taman Jurong Food Centre", "3 Yung Sheng Rd, Singapore 618499", "foodpanda.sg", "https://live.staticflickr.com/65535/49171883881_d79fe7befd_h.jpg"],
+  ["Bukit Batok Street 11 Food", "155 Bukit Batok Street 11, #01-01, Singapore 650155", "foodpanda.sg", "http://2.bp.blogspot.com/-BngS4dRuiko/VayTYJD9uaI/AAAAAAAADYM/9mg70GVNX0c/w1200-h630-p-k-no-nu/Yong%2BXing%2BCoffeeshop%2BBlk%2B154%2BSt%2B11-Bkt%2BBatok%2B%2528i%2529.PNG"],
+  ["Meng Soon Huat Food Centre", "359 Bukit Batok Street 31, #01-401 Block 359, Singapore 650359", "foodpanda.sg", "https://yeeppi.files.wordpress.com/2020/03/20200229_0750024163557313326853064.jpg?w=540"], Food, "hawker"])
 
   const topFitness = ([
   ["Jurong West ActiveSG Gym", "20 Jurong West Street 93 Singapore 648965", "https://www.myactivesg.com/facilities/jurong-west-activesg-gym", "https://tinyurl.com/yt7w7dkm"],
