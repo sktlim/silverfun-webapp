@@ -51,10 +51,16 @@ function Home() {
           <div className="relative flex justify-center item-center text-center bg-white px-10 m-auto overflow-auto">
             <GMaps url1={url1} url2={url2} url3={url3} state1={state1} state2={state2} state3={state3} className="w-max"/>
           </div>
+<<<<<<< HEAD
           <div className="w-2/6 flex justify-center">
             <div className="flex flex-col justify-right">
             <Button classNames={`w-fit bg-white mb-6 drop-shadow-none border border-black opacity-50 text-lg + ${mapFilter === "Activities" ? 'opacity-100 ' : ''}`} icon={ActivityPin} text="  Activities" onClickHandler={() => setMapFilter(mapFilter === "Activities" ? "none" : "Activities")} />
             <Button classNames={`w-fit mb-16 bg-white mb-9 drop-shadow-none border border-black opacity-50 text-lg + ${mapFilter === "Healthcare" ? 'opacity-100 ' : ''}`} icon={HealthcarePin} text=" Healthcare Services" onClickHandler={() => setMapFilter(mapFilter === "Healthcare" ? "none" : "Healthcare")} />
+=======
+          <div>
+            <Button classNames={`bg-white mb-6 drop-shadow-none border border-black opacity-50 text-lg + ${mapFilter === "Activities" ? 'opacity-100 ' : ''}`} icon={ActivityPin} text="  Activities" onClickHandler={() => setMapFilter(mapFilter === "Activities" ? "none" : "Activities")} />
+            <Button classNames={`mb-16 bg-white mb-9 drop-shadow-none border border-black opacity-50 text-lg + ${mapFilter === "Healthcare" ? 'opacity-100 ' : ''}`} icon={HealthcarePin} text=" Healthcare Services" onClickHandler={() => setMapFilter(mapFilter === "Healthcare" ? "none" : "Healthcare")} />
+>>>>>>> cb50dde68196e89cd943bc62da60fbb4a3a10258
             
             {mapFilter === "Activities" ? <ActivitiesPopup /> : mapFilter === "Healthcare" ? <HealthcarePopup /> : <EmptyPopup />}
             </div>
