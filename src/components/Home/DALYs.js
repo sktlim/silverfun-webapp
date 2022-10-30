@@ -2,6 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Bar } from 'react-chartjs-2';
 import { Chart, registerables } from 'chart.js';
+import HealthcarePin from "../../assets/icons/HealthcarePin.svg"
+import Button from "../Button";
 Chart.register(...registerables);
 
 //https://data.gov.sg/api/action/datastore_search?resource_id=051f815e-326e-4973-b62f-61cad9ed3284
@@ -32,7 +34,7 @@ const DALYs = () => {
                                 "#EC5863",
                             ],
                             barThickness: 20,
-                            lineWidth : 0
+                            lineWidth: 0
                         },
                     ]
 
@@ -47,7 +49,7 @@ const DALYs = () => {
 
     return (
         <div className="mx-20 w-5/6">
-            <div className="">
+            <div className="relative w-[55vw]">
                 {loading === true ? <div className="w-full flex justify-center text-center">loading...</div> :
                     <Bar
                         data={data}
@@ -59,7 +61,7 @@ const DALYs = () => {
                             plugins: {
                                 title: {
                                     display: true,
-                                    text: "Distribution of Disability-Adjusted Life Years by Broad Cause Group(2019)"
+                                    text: "Distribution of Disability-Adjusted Life Years by Broad Cause Group (2019)"
                                 },
                                 legend: {
                                     display: true,
@@ -70,7 +72,46 @@ const DALYs = () => {
                     />}
 
             </div>
+<<<<<<< HEAD
+            <p className="text-center py-5 italic">1 DALYs = loss of one year of full health</p>
+            <div className="bg-white w-full h-min rounded-xl mb-10 py-5 px-10">
+                <div className="flex justify-between items-center mb-5">
+                    <h4 classNames="w-10">How to prevent musculoskeletal disorders</h4>
+                    <Button classNames="text-lg" text="Schedule appointment" icon={HealthcarePin} onClickHandler={event => window.open("https://www.nuh.com.sg/patients-visitors/Appointments/Pages/default.aspx")}></Button>
+=======
+            <p className="text-center pt-5">1 DALYs = loss of one year of full health</p>
+            <div className="bg-white w-full h-min rounded-xl mb-10 py-5 px-10">
+                <div className="flex justify-between items-center mb-5">
+                    <h4 classNames="w-10">How to prevent musculoskeletal disorders</h4>
+                    <Button classNames="text-lg" text="Schedule appointment" icon={HealthcarePin}></Button>
+>>>>>>> cb50dde68196e89cd943bc62da60fbb4a3a10258
+                </div>
+                <div className="flex justify-between">
+                    <div className="bg-yellow mx-10 h-78 rounded-xl p-5">
+                        <div className="w-full flex justify-center mb-4">
+                            <h5 className="bg-white w-10 h-10 text-center py-1.5 rounded-3xl text-yellow">1</h5>
+                        </div>
+                        <p className="text-center">Spinal arthritis is common in elderly, which comes with symptoms such as stiffness, low back pain, and tension.</p>
+
+                    </div>
+                    <div className="bg-yellow h-78 rounded-xl p-5">
+                        <div className="w-full flex justify-center mb-4">
+                            <h5 className="bg-white w-10 h-10 text-center py-1.5 rounded-3xl text-yellow">2</h5>
+                        </div>
+                        <p className="text-center">Adopt an anti-inflammatory diet and try exercises such as yoga to delay detoriation.</p>
+
+                    </div>
+                    <div className="bg-yellow mx-10  h-78 rounded-xl p-5">
+                        <div className="w-full flex justify-center mb-4">
+                            <h5 className="bg-white w-10 h-10 text-center py-1.5 rounded-3xl text-yellow">3</h5>
+                        </div>
+                        <p className="text-center">Book a consultation with your doctor to learn how to use physiotherapy to slow down the progression of spinal arthritis.</p>
+                    </div>
+
+                </div>
+            </div>
         </div>
+
     );
 };
 
