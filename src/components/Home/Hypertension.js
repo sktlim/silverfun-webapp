@@ -15,11 +15,7 @@ const Hypertension = () => {
             <h4>When should I check for Hyperlipidemia</h4>
             <h4>(High Cholesterol)?</h4>
           </div>
-<<<<<<< HEAD
           <Button classNames="text-lg" text="Schedule appointment" icon={HealthcarePin} onClickHandler={event => window.open("https://www.nuh.com.sg/patients-visitors/Appointments/Pages/default.aspx")}></Button>
-=======
-          <Button classNames="text-lg" text="Schedule appointment" icon={HealthcarePin}></Button>
->>>>>>> cb50dde68196e89cd943bc62da60fbb4a3a10258
         </div>
         <div className="flex justify-between">
           <div className="bg-yellow mx-10 h-78 rounded-xl p-5">
