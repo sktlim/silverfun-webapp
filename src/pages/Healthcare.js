@@ -5,8 +5,16 @@ import Pharmacy from "../assets/icons/Hospital 3.png";
 import Elderly from "../assets/icons/Grandfather.svg";
 import Boxes from "../components/Boxes";
 import GMaps from "../components/GMaps";
-import React from "react";
+import React, {useEffect} from "react";
 import Footer from "../components/Footer";
+import { eldercareServices } from "../assets/geoJSON/eldercareServices";
+import Squats from "../assets/icons/Squats.png";
+import Book from "../assets/icons/Book.png";
+import Food from "../assets/icons/Food.png";
+import { Link } from "react-router-dom";
+import { hawker } from "../assets/geoJSON/hawker"
+import { gyms } from "../assets/geoJSON/gyms"
+import axios from 'axios';
 
 
 function Healthcare() {
@@ -17,6 +25,86 @@ function Healthcare() {
   const [state1, setState1] = React.useState(true);
   const [state2, setState2] = React.useState(false);
   const [state3, setState3] = React.useState(false);
+
+  const [filter, setFilter] = React.useState("eldercare");
+  const [isLoading, setLoading] = React.useState(true)
+  const [isRendering, setRendering] = React.useState(true)
+
+  const [topEldercare, setTopEldercare] = React.useState(null);
+
+  const topPharmacies = ([
+  ["name", "address", "link", "photourl"],
+  ["name", "address", "link", "photourl"],
+  ["name", "address", "link", "photourl"],
+  ["name", "address", "link", "photourl"],
+  ["name", "address", "link", "photourl"], Pharmacy, "pharmacy"])
+
+  const topCovid = ([
+    ["name", "address", "link", "photourl"],
+    ["name", "address", "link", "photourl"],
+    ["name", "address", "link", "photourl"],
+    ["name", "address", "link", "photourl"],
+    ["name", "address", "link", "photourl"], Coronavirus, "covid"])
+
+  const loadingOptions = ([
+  ["loading", "loading", "loading"],
+  ["loading", "loading", "loading"],
+  ["loading", "loading", "loading"],
+  ["loading", "loading", "loading"],
+  ["loading", "loading", "loading"], "loading"])
+  const [display, setDisplay] = React.useState(loadingOptions);
+
+  //eldercare
+  const eldercareData = new Blob([JSON.stringify(eldercareServices, null, 2)], {
+    type: "application/json",
+  });
+
+  const eldercareform = new FormData();
+  eldercareform.append("data", eldercareData, "libraries.geojson");
+  eldercareform.append("lat", "1.3483");
+  eldercareform.append("lng", "103.6831");
+
+  const eldercareoptions = {
+    method: "POST",
+    body: eldercareform,
+  }
+
+  useEffect(() => {
+    axios.post("https://silverfun-backend.limsui.repl.co", eldercareform, eldercareoptions)
+      .then(response => {
+        console.log("libraries");
+        // console.log(libraryData)
+        console.log(response.data);
+        setTopEldercare(
+          [[response.data[0].properties.Name, response.data[0].properties.ADDRESSBLOCKHOUSENUMBER + " "+ response.data[0].properties.ADDRESSSTREETNAME + " Singapore " + response.data[0].properties.ADDRESSPOSTALCODE, response.data[0].properties.HYPERLINK, response.data[0].properties.PHOTOURL],
+          [response.data[1].properties.Name, response.data[1].properties.ADDRESSBLOCKHOUSENUMBER + " "+ response.data[1].properties.ADDRESSSTREETNAME + " Singapore " + response.data[1].properties.ADDRESSPOSTALCODE, response.data[1].properties.HYPERLINK, response.data[1].properties.PHOTOURL],
+          [response.data[2].properties.Name, response.data[2].properties.ADDRESSBLOCKHOUSENUMBER + " "+ response.data[2].properties.ADDRESSSTREETNAME + " Singapore " + response.data[2].properties.ADDRESSPOSTALCODE, response.data[2].properties.HYPERLINK, response.data[2].properties.PHOTOURL],
+          [response.data[3].properties.Name, response.data[3].properties.ADDRESSBLOCKHOUSENUMBER + " "+ response.data[3].properties.ADDRESSSTREETNAME + " Singapore " + response.data[3].properties.ADDRESSPOSTALCODE, response.data[3].properties.HYPERLINK, response.data[3].properties.PHOTOURL],
+          [response.data[4].properties.Name, response.data[4].properties.ADDRESSBLOCKHOUSENUMBER + " "+ response.data[4].properties.ADDRESSSTREETNAME + " Singapore " + response.data[4].properties.ADDRESSPOSTALCODE, response.data[4].properties.HYPERLINK, response.data[4].properties.PHOTOURL], Elderly, "eldercare"])
+        console.log(topEldercare);
+        console.log(display);
+        setLoading(false)
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, [])
+
+  useEffect(() => {
+    console.log(filter)
+    if(filter === "eldercare" && isLoading === false){
+      setDisplay(topEldercare)
+      setRendering(false)
+    }
+    else if(filter === "pharmacy"){
+      setDisplay(topPharmacies)
+      console.log(display)
+    }
+    else if(filter === "covid"){
+      setDisplay(topCovid)
+      console.log(display)
+    }
+  }, [filter, isLoading]);
 
 
   return (
@@ -36,36 +124,21 @@ function Healthcare() {
             </div>
           <br />
 
-          {/* <div class="align middle">
-            <input
-              class="border-2 border-gray-300 bg-white h-10 px-5 w-80 rounded-lg text-sm focus:outline-none shadow"
-              type="text"
-              id="header-search"
-              placeholder="Search for healthcare services near you"
-              name="s"
-            />
-          </div> */}
-
-          {/* <p class="text-sm text-gray-400 italic">Alternatively, filter through the services by pressing one of the buttons below.</p> */}
-
-          <br />
           <div class="inline-flex space-x-9">
-
-            <button class="bg-white h-10 px-5 rounded-lg flex items-center text-center text-md rounded-md  hover:scale-105 transition-all duration-150 ease-linear drop-shadow-lg">
+            <button class={`bg-white h-10 px-5 rounded-lg flex items-center text-center text-md rounded-md + ${filter === "eldercare" ? 'border-2 border-gray-400 shadow-inner' : 'hover:scale-105 transition-all duration-150 ease-linear drop-shadow-lg'}`} onClick={event => setFilter("eldercare")} >
+              <div class="flex flex-row space-x-1">
+                <img src={Elderly} class="object-scale-down h-25 w-7" />
+                <div>Eldercare Services</div>
+              </div>
+            </button>
+            <button class={`bg-white h-10 px-5 rounded-lg flex items-center text-center text-md rounded-md + ${filter === "pharmacy" ? 'border-2 border-gray-400 shadow-inner' : 'hover:scale-105 transition-all duration-150 ease-linear drop-shadow-lg'}`} onClick={event => setFilter("pharmacy")} >
               <div class="flex flex-row space-x-1">
                 <img src={Pharmacy} class="object-scale-down h-25 w-7" />
                 <div>Pharmacies</div>
               </div>
             </button>
 
-            <button class="bg-white h-10 px-5 rounded-lg flex items-center text-center text-md rounded-md  hover:scale-105 transition-all duration-150 ease-linear drop-shadow-lg">
-              <div class="flex flex-row space-x-1">
-                <img src={Elderly} class="object-scale-down h-25 w-7" />
-                <div>Eldercare Services</div>
-              </div>
-            </button>
-
-            <button class="bg-white h-10 px-5 rounded-lg flex items-center text-center text-md rounded-md  hover:scale-105 transition-all duration-150 ease-linear drop-shadow-lg">
+            <button class={`bg-white h-10 px-5 rounded-lg flex items-center text-center text-md rounded-md + ${filter === "covid" ? 'border-2 border-gray-400 shadow-inner' : 'hover:scale-105 transition-all duration-150 ease-linear drop-shadow-lg'}`} onClick={event => setFilter("covid")} >
               <div class="flex flex-row space-x-1">
                 <img src={Coronavirus} class="object-scale-down h-25 w-7" />
                 <div>COVID-19 Services</div>
@@ -74,19 +147,40 @@ function Healthcare() {
 
           </div>
 
-          <div>
+          {isRendering ? <div>Loading</div> : <div>
+      {console.log('display')}
+          {console.log(display)}
+            <br />
+            <Link to={"/HealthcareDetails"}
+              state={{ name: display[0][0], address: display[0][1], link: display[0][2], photo: display[0][3], type: display[6]}}
+            >
+              <Boxes icon={display[5]} text1={display[0][0]} text2={display[0][1]} time="20 Min"></Boxes>
+            </Link>
+            <br />
+            <Link to={"/HealthcareDetails"}
+              state={{ name: display[1][0], address: display[1][1], link: display[1][2] , photo: display[1][3], type: display[6]}}
+            >
+              <Boxes icon={display[5]} text1={display[1][0]} text2={display[1][1]} time="23 Min"></Boxes></Link>
+            <br />
+            <Link to={"/HealthcareDetails"}
+              state={{ name: display[2][0], address: display[2][1], link: display[2][2] , photo: display[2][3], type: display[6]}}
+            >
+              <Boxes icon={display[5]} text1={display[2][0]} text2={display[2][1]} time="25 Min"></Boxes>
+            </Link>
+            <br />
+            <Link to={"/HealthcareDetails"}
+              state={{ name: display[3][0], address: display[3][1], link: display[3][2] , photo: display[3][3], type: display[6]}}
+            >
+              <Boxes icon={display[5]} text1={display[3][0]} text2={display[3][1]} time="25 Min"></Boxes></Link>
+            <br />
+            <Link to={"/HealthcareDetails"}
+              state={{ name: display[4][0], address: display[4][1], link: display[4][2] , photo: display[4][3], type: display[6]}}
+            >
+              <Boxes icon={display[5]} text1={display[4][0]} text2={display[4][1]} time="25 Min"></Boxes>
+            </Link>
+            <br />
 
-            <br />
-            <Boxes icon={Pharmacy} text1="National Healthcare Group Pharmacy (Pioneer)" text2="648201 Jurong West Street 61" time="20 Min"></Boxes>
-            <br />
-            <Boxes icon={Pharmacy} text1="Jurong Medical Centre Pharmacy" text2="648346 Jurong West Central 3" time="24 Min"></Boxes>
-            <br />
-            <Boxes icon={Elderly} text1="Central 24-HR Clinic-Pioneer North" text2="959 Jurong West Street 92, 01-160, Singapore 640959" time="26 Min"></Boxes>
-            <br />
-            <Boxes icon={Coronavirus} text1="THK SAC @ Boon Lay" text2="Blk 190 Boon Lay Drive #01-242, Singapore 640190" time="26 Min"></Boxes>
-            <br />
-
-          </div>
+          </div>}
 
           <body> 1 of 5 </body>
           <button class="text-sm hover:scale-105 "> Next {'>'} </button>

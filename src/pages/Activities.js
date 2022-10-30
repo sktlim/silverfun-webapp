@@ -12,7 +12,6 @@ import { library } from "../assets/geoJSON/libraries";
 import { hawker } from "../assets/geoJSON/hawker"
 import { gyms } from "../assets/geoJSON/gyms"
 import axios from 'axios';
-import { displayPartsToString } from "typescript";
 
 
 
@@ -83,7 +82,7 @@ function Activities() {
   // });
 
   // const hawkerForm = new FormData();
-  // hawkerForm.append("data", hawkerData, "libraries.geojson");
+  // hawkerForm.append("data", hawkerData, "hawker-centres.geojson");
   // hawkerForm.append("lat", "1.3483");
   // hawkerForm.append("lng", "103.6831");
 
@@ -93,19 +92,19 @@ function Activities() {
   // }
 
   //fitness
-  const fitnessData = new Blob([JSON.stringify(gyms, null, 2)], {
-    type: "application/json",
-  });
+  // const fitnessData = new Blob([JSON.stringify(gyms, null, 2)], {
+  //   type: "application/json",
+  // });
 
-  const fitnessForm = new FormData();
-  fitnessForm.append("data", fitnessData, "libraries.geojson");
-  fitnessForm.append("lat", "1.3483");
-  fitnessForm.append("lng", "103.6831");
+  // const fitnessForm = new FormData();
+  // fitnessForm.append("data", fitnessData, "gyms-sg-geojson.geojson");
+  // fitnessForm.append("lat", "1.3483");
+  // fitnessForm.append("lng", "103.6831");
 
-  const fitnessoptions = {
-    method: "POST",
-    body: fitnessForm,
-  }
+  // const fitnessoptions = {
+  //   method: "POST",
+  //   body: fitnessForm,
+  // }
 
   //response.data[0].properties.Name, response.data[0].properties.ADDRESSBLOCKHOUSENUMBER, response.data[0].properties.ADDRESSSTREETNAME, response.data[0].properties.ADDRESSPOSTALCODE, response.data[0].properties.PHOTOURL
   //library
@@ -162,19 +161,17 @@ function Activities() {
 
   //fitness
 
-  useEffect(() => {
-    axios.post("https://silverfun-backend.limsui.repl.co", fitnessForm, fitnessoptions)
-      .then(response => {
-        console.log("fitness");
-        console.log(response.data);
+  // useEffect(() => {
+  //   axios.post("https://silverfun-backend.limsui.repl.co", fitnessForm, fitnessoptions)
+  //     .then(response => {
+  //       console.log("fitness");
+  //       console.log(response.data);
         
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }, [])
-
-
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // }, [])
 
 
   return (
@@ -251,7 +248,7 @@ function Activities() {
               <Boxes icon={display[5]} text1={display[3][0]} text2={display[3][1]} time="25 Min"></Boxes></Link>
             <br />
             <Link to={"/ActivityDetails"}
-              state={{ name: topLibraries[4][0], address: display[4][1], link: display[4][2] , photo: display[4][3], type: display[6]}}
+              state={{ name: display[4][0], address: display[4][1], link: display[4][2] , photo: display[4][3], type: display[6]}}
             >
               <Boxes icon={display[5]} text1={display[4][0]} text2={display[4][1]} time="25 Min"></Boxes>
             </Link>
