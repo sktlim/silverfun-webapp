@@ -1,10 +1,21 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Logo from "../assets/silverfunlogo.svg";
 import FooterProfile from "./FooterProfile";
 import { Link } from "react-router-dom";
-
+import { AuthProvider, useAuth } from "../AuthContext"
 
 const Footer = () => {
+  const { currentUser } = useAuth()
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    if (currentUser === null) {
+      setIsLoggedIn(false)
+    }
+    else {
+      setIsLoggedIn(true)
+    }
+  }, [currentUser]);
   return (
     <div className={`w-full bg-blue-100 h-min`}>
       <div
@@ -12,7 +23,7 @@ const Footer = () => {
       >
         <div className={`flex flex-col items-center p-5`}>
           <Link to="/"><img src={Logo} className=" p-5 px-10" alt="logo" /></Link>
-          <FooterProfile />
+          {isLoggedIn ? <FooterProfile /> : <div className = "w-44 h-56"></div>}
         </div>
         <div className={`flex p-5 justify-around text-gray-600 font-["Rubik"] w-4/6`}>
           <div className={`flex flex-col items-left px-5`}>
