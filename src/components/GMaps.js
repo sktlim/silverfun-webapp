@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     GoogleMap,
     useLoadScript,
@@ -21,7 +21,7 @@ import {
 
 // import "@reach/combobox/styles.css";
 import mapStyles from "../Styles/mapStyles";
-import compass from "../assets/icons/compass-svgrepo-com.svg";
+import compass from "../assets/icons/compass.svg";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -37,11 +37,18 @@ const center = {
     lat: 1.3521,
     lng: 103.8198,
 };
-export default function GMaps(url1, state1, url2, state2, url3, state3) {
+
+
+
+export default function GMaps(url1, state1, url2, state2, url3, state3, setToRender, setMapsReady) {
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GMAPS_API_KEY,
         libraries,
     });
+
+    // addressToRender;
+    // console.log(addressToRender);
+    // const [addressToRender, setAddressToRender] = useState()
     // const [markers, setMarkers] = React.useState([]);
     // const [selected, setSelected] = React.useState(null);
 
@@ -73,6 +80,7 @@ export default function GMaps(url1, state1, url2, state2, url3, state3) {
 
     if (loadError) return "Error";
     if (!isLoaded) return "Loading...";
+    
 
     return (
         <div>
@@ -139,9 +147,9 @@ export default function GMaps(url1, state1, url2, state2, url3, state3) {
 }
 
 function Locate({ panTo }) {
-    return (
+    return (<div className="w-full flex justify-center">
         <button
-            className="w-auto h-auto"
+            className="w-max flex"
             onClick={() => {
                 navigator.geolocation.getCurrentPosition(
                     (position) => {
@@ -154,12 +162,15 @@ function Locate({ panTo }) {
                 );
             }}
         >
-            <img classname="w-auto h-4 p-2 z-10" src='{compass}' alt="compass" />
-        </button>
+            <img classname="p-2 z-10 px-10" src={compass} alt="compass" />
+            <p classname="w-max mx-10 text-sm">Pan to current location</p>
+        </button></div>
     );
 }
 
-function Search({ panTo }) {
+
+
+function Search({ panTo}, setMapsReady, setToRender) {
     const {
         ready,
         value,
@@ -186,6 +197,8 @@ function Search({ panTo }) {
         try {
             const results = await getGeocode({ address });
             const { lat, lng } = await getLatLng(results[0]);
+            setToRender({ lat, lng });
+            setMapsReady(true);
             panTo({ lat, lng });
         } catch (error) {
             console.log("Error: ", error);
@@ -202,7 +215,7 @@ function Search({ panTo }) {
         //       name="s" />
         //   </div>
         <div class="flex justify-center bg-white">
-            <div className="flex justify-center border-2 border-gray-300 h-10 w-72 rounded-lg text-sm focus:outline-none shadow">
+            <div className="flex justify-center border-2 border-gray-300 h-10 w-72 rounded-lg text-sm focus:outline-none shadow items-center mt-5">
                 <Combobox onSelect={handleSelect}>
                     <ComboboxInput
                         value={value}
@@ -211,7 +224,7 @@ function Search({ panTo }) {
                         className="text-center"
                         placeholder="Search your location"
                     />
-                    <ComboboxPopover>
+                    <ComboboxPopover className="bg-white">
                         <ComboboxList>
                             {status === "OK" &&
                                 data.map(({ id, description }) => (

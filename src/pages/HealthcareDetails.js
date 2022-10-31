@@ -1,8 +1,11 @@
 import Header from "../components/Header";
 import React from "react"
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function HealthcareDetails() {
+
+  const location = useLocation();
+
   return (
     <div>
     <Header />
@@ -14,7 +17,7 @@ function HealthcareDetails() {
         alt="back icon"
       /></Link>
       <h1 className = "text-left mb-5">
-        <text className="text-blue-700">Jurong Medical Centre Pharmacy</text>
+        <text className="text-blue-700">{location.state.name}</text>
       </h1>
     </div>
 
@@ -24,7 +27,7 @@ function HealthcareDetails() {
       <div>
         {/* photo */}
         <img
-        src="https://www.healthcare.com.sg/wp-content/uploads/2016/07/jurong-medical-centre.jpg"
+        src={location.state.photo}
         class="py-10 px-10 max-w-2xl h-auto w-full"
         alt="Jurong Medical Centre Pharmacy"
         />
@@ -41,7 +44,7 @@ function HealthcareDetails() {
         {/* location */}
         <div>
           <p class = "py-5 px-10">
-          60 Jurong West Central 3, #1-8, Singapore 648346
+          {location.state.address}
           </p>
         </div>
 
@@ -73,7 +76,7 @@ function HealthcareDetails() {
             alt="Globe icon"
             />
             {/* website url */}
-            <p class = "mt-1 px-2">http://www.jmc.com.sg</p>
+            <Link class="mt-1 px-2" to = {location.state.link}>{location.state.link}</Link>
             {/* exit icon */}
             <img
             src="https://cdn-icons-png.flaticon.com/512/3580/3580189.png"

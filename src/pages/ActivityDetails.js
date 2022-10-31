@@ -9,7 +9,7 @@ import lateralraise from "../assets/images/lateralraise.jpg";
 function ActivityDetails() {
 
   const location = useLocation();
-  console.log(location)
+  
   return (
     <div>
       <Header />
