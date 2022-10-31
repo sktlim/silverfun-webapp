@@ -4,12 +4,13 @@ import { Link, useLocation } from "react-router-dom";
 import bicepcurl from "../assets/images/bicepcurl.jpg";
 import cardio from "../assets/images/cardio.jpg";
 import lateralraise from "../assets/images/lateralraise.jpg";
+import Footer from "../components/Footer";
 
 
 function ActivityDetails() {
 
   const location = useLocation();
-  console.log(location)
+  
   return (
     <div>
       <Header />
@@ -195,7 +196,7 @@ function ActivityDetails() {
         </div>
 
       </div>
-
+      <Footer />
     </div>
   );
 }

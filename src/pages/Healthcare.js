@@ -22,8 +22,8 @@ function Healthcare() {
   const url2 = 'https://storage.googleapis.com/swe-silverfun-app.appspot.com/ELDERCARE.kml';
   const url3 = 'https://storage.googleapis.com/swe-silverfun-app.appspot.com/AED_Locations.kml';
 
-  const [state1, setState1] = React.useState(true);
-  const [state2, setState2] = React.useState(false);
+  const [state1, setState1] = React.useState(false);
+  const [state2, setState2] = React.useState(true);
   const [state3, setState3] = React.useState(false);
 
   const [filter, setFilter] = React.useState("eldercare");
@@ -94,14 +94,23 @@ function Healthcare() {
     console.log(filter)
     if(filter === "eldercare" && isLoading === false){
       setDisplay(topEldercare)
+      setState1(false)
+      setState2(true)
+      setState3(false)
       setRendering(false)
     }
     else if(filter === "pharmacy"){
       setDisplay(topPharmacies)
+      setState1(true)
+      setState2(false)
+      setState3(false)
       console.log(display)
     }
     else if(filter === "covid"){
       setDisplay(topCovid)
+      setState1(false)
+      setState2(false)
+      setState3(true)
       console.log(display)
     }
   }, [filter, isLoading]);
@@ -113,7 +122,7 @@ function Healthcare() {
     <Header />
     <div className = "flex h-min">
         <p className = "text-center m-auto">
-          <h1>Healthcare Services</h1>
+          <h1 className = "mb-2">Healthcare Services</h1>
           <body>Find out more about healthcare services you might need around you, and other necessary information like details on <br/> how to make appointments!</body>
 
           <br />
@@ -182,8 +191,8 @@ function Healthcare() {
 
           </div>}
 
-          <body> 1 of 5 </body>
-          <button class="text-sm hover:scale-105 "> Next {'>'} </button>
+          {/* <body> 1 of 5 </body>
+          <button class="text-sm hover:scale-105 "> Next {'>'} </button> */}
           <br />
         </p>
       </div>
