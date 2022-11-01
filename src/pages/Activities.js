@@ -20,9 +20,9 @@ function Activities() {
   const url2 = "https://storage.googleapis.com/swe-silverfun-app.appspot.com/hawker-centres-kml.kml";
   const url3 = "https://storage.googleapis.com/swe-silverfun-app.appspot.com/libraries.kml";
 
-  const [state1, setState1] = React.useState(true);
+  const [state1, setState1] = React.useState(false);
   const [state2, setState2] = React.useState(false);
-  const [state3, setState3] = React.useState(false);
+  const [state3, setState3] = React.useState(true);
 
   const obj = {
     url1: url1,
@@ -37,28 +37,31 @@ function Activities() {
   const [isLoading, setLoading] = React.useState(true)
   const [isRendering, setRendering] = React.useState(true)
 
+  const [toRender, setToRender] = React.useState()
+  const [mapsReady, setMapsReady] = React.useState(false)
+
   const [topLibraries, setTopLibraries] = React.useState(null);
 
   const topHawkers = ([
-  ["Boon Lay Place Market and Food Village", "221A Boon Lay Pl, Singapore 641221", "deliveroo.com.sg", ""],
-  ["Jurong West 505 Market & Food Centre", "505 Jurong West Street 52, Singapore 640505", "deliveroo.com.sg", ""],
-  ["Taman Jurong Food Centre", "3 Yung Sheng Rd, Singapore 618499", "foodpanda.sg", ""],
-  ["Bukit Batok Street 11 Food", "155 Bukit Batok Street 11, #01-01, Singapore 650155", "foodpanda.sg", ""],
-  ["Meng Soon Huat Food Centre", "359 Bukit Batok Street 31, #01-401 Block 359, Singapore 650359", "foodpanda.sg", ""], Food, "hawker"])
+    ["Boon Lay Place Market and Food Village", "221A Boon Lay Pl, Singapore 641221", "deliveroo.com.sg", "https://mustsharenews.com/wp-content/uploads/2021/07/boon-lay-place-food-village-1.jpg"],
+    ["Jurong West 505 Market & Food Centre", "505 Jurong West Street 52, Singapore 640505", "deliveroo.com.sg", "https://findd.sg/custom/domain_1/image_files/sitemgr_photo_1800.jpg"],
+    ["Taman Jurong Food Centre", "3 Yung Sheng Rd, Singapore 618499", "foodpanda.sg", "https://live.staticflickr.com/65535/49171883881_d79fe7befd_h.jpg"],
+    ["Bukit Batok Street 11 Food", "155 Bukit Batok Street 11, #01-01, Singapore 650155", "foodpanda.sg", "http://2.bp.blogspot.com/-BngS4dRuiko/VayTYJD9uaI/AAAAAAAADYM/9mg70GVNX0c/w1200-h630-p-k-no-nu/Yong%2BXing%2BCoffeeshop%2BBlk%2B154%2BSt%2B11-Bkt%2BBatok%2B%2528i%2529.PNG"],
+    ["Meng Soon Huat Food Centre", "359 Bukit Batok Street 31, #01-401 Block 359, Singapore 650359", "foodpanda.sg", "https://yeeppi.files.wordpress.com/2020/03/20200229_0750024163557313326853064.jpg?w=540"], Food, "hawker"])
 
   const topFitness = ([
-  ["Jurong West ActiveSG Gym", "20 Jurong West Street 93 Singapore 648965", "https://www.myactivesg.com/facilities/jurong-west-activesg-gym", "https://tinyurl.com/yt7w7dkm"],
-  ["Amore Fitness @ Jurong Point 2", "63 Jurong West Central 3, #03-17, Singapore 648886", "https://amorefitness.com.sg", "https://tinyurl.com/34bmdjn5"],
-  ["Jurong East ActiveSG Gym", "21 Jurong East Street 31 Singapore 609517", "https://www.myactivesg.com/facilities/jurong-east-activesg-gym", "https://www.myactivesg.com/-/media/SSC/Consumer/Images/Facilities/Jurong-East-ActiveSG-Gym/Jurong-East-ActiveSG-Gym1.ashx"],
-  ["OMG Yoga", "134 Jurong Gateway Rd, Singapore 600134", "https://www.yogasingapore.net", "https://www.yogasingapore.net/wp-content/uploads/2014/08/privateyoga.jpg"], 
-  ["Gold's Gym @ IBP Jurong East", "2 International Business Park, #01-05, Singapore 609930", "http://www.goldsgym.com.sg/ibp-jurong-east", "https://thegrandstand.com.sg/wp-content/uploads/2019/04/DSC01019.jpg"], Squats, "fitness"])
+    ["Jurong West ActiveSG Gym", "20 Jurong West Street 93 Singapore 648965", "https://www.myactivesg.com/facilities/jurong-west-activesg-gym", "https://tinyurl.com/yt7w7dkm"],
+    ["Amore Fitness @ Jurong Point 2", "63 Jurong West Central 3, #03-17, Singapore 648886", "https://amorefitness.com.sg", "https://tinyurl.com/34bmdjn5"],
+    ["Jurong East ActiveSG Gym", "21 Jurong East Street 31 Singapore 609517", "https://www.myactivesg.com/facilities/jurong-east-activesg-gym", "https://www.myactivesg.com/-/media/SSC/Consumer/Images/Facilities/Jurong-East-ActiveSG-Gym/Jurong-East-ActiveSG-Gym1.ashx"],
+    ["OMG Yoga", "134 Jurong Gateway Rd, Singapore 600134", "https://www.yogasingapore.net", "https://www.yogasingapore.net/wp-content/uploads/2014/08/privateyoga.jpg"],
+    ["Gold's Gym @ IBP Jurong East", "2 International Business Park, #01-05, Singapore 609930", "http://www.goldsgym.com.sg/ibp-jurong-east", "https://thegrandstand.com.sg/wp-content/uploads/2019/04/DSC01019.jpg"], Squats, "fitness"])
 
   const loadingOptions = ([
-  ["loading", "loading", "loading"],
-  ["loading", "loading", "loading"],
-  ["loading", "loading", "loading"],
-  ["loading", "loading", "loading"],
-  ["loading", "loading", "loading"], "loading"])
+    ["loading", "loading", "loading"],
+    ["loading", "loading", "loading"],
+    ["loading", "loading", "loading"],
+    ["loading", "loading", "loading"],
+    ["loading", "loading", "loading"], "loading"])
   const [display, setDisplay] = React.useState(loadingOptions);
 
   //library
@@ -117,11 +120,11 @@ function Activities() {
         // console.log(libraryData)
         console.log(response.data);
         setTopLibraries(
-          [[response.data[0].properties.Name, response.data[0].properties.ADDRESSBLOCKHOUSENUMBER + " "+ response.data[0].properties.ADDRESSSTREETNAME + " Singapore " + response.data[0].properties.ADDRESSPOSTALCODE, response.data[0].properties.HYPERLINK, response.data[0].properties.PHOTOURL],
-          [response.data[1].properties.Name, response.data[1].properties.ADDRESSBLOCKHOUSENUMBER + " "+ response.data[1].properties.ADDRESSSTREETNAME + " Singapore " + response.data[1].properties.ADDRESSPOSTALCODE, response.data[1].properties.HYPERLINK, response.data[1].properties.PHOTOURL],
-          [response.data[2].properties.Name, response.data[2].properties.ADDRESSBLOCKHOUSENUMBER + " "+ response.data[2].properties.ADDRESSSTREETNAME + " Singapore " + response.data[2].properties.ADDRESSPOSTALCODE, response.data[2].properties.HYPERLINK, response.data[2].properties.PHOTOURL],
-          [response.data[3].properties.Name, response.data[3].properties.ADDRESSBLOCKHOUSENUMBER + " "+ response.data[3].properties.ADDRESSSTREETNAME + " Singapore " + response.data[3].properties.ADDRESSPOSTALCODE, response.data[3].properties.HYPERLINK, response.data[3].properties.PHOTOURL],
-          [response.data[4].properties.Name, response.data[4].properties.ADDRESSBLOCKHOUSENUMBER + " "+ response.data[4].properties.ADDRESSSTREETNAME + " Singapore " + response.data[4].properties.ADDRESSPOSTALCODE, response.data[4].properties.HYPERLINK, response.data[4].properties.PHOTOURL], Book, "library"])
+          [[response.data[0].properties.Name, response.data[0].properties.ADDRESSBLOCKHOUSENUMBER + " " + response.data[0].properties.ADDRESSSTREETNAME + " Singapore " + response.data[0].properties.ADDRESSPOSTALCODE, response.data[0].properties.HYPERLINK, response.data[0].properties.PHOTOURL],
+          [response.data[1].properties.Name, response.data[1].properties.ADDRESSBLOCKHOUSENUMBER + " " + response.data[1].properties.ADDRESSSTREETNAME + " Singapore " + response.data[1].properties.ADDRESSPOSTALCODE, response.data[1].properties.HYPERLINK, response.data[1].properties.PHOTOURL],
+          [response.data[2].properties.Name, response.data[2].properties.ADDRESSBLOCKHOUSENUMBER + " " + response.data[2].properties.ADDRESSSTREETNAME + " Singapore " + response.data[2].properties.ADDRESSPOSTALCODE, response.data[2].properties.HYPERLINK, response.data[2].properties.PHOTOURL],
+          [response.data[3].properties.Name, response.data[3].properties.ADDRESSBLOCKHOUSENUMBER + " " + response.data[3].properties.ADDRESSSTREETNAME + " Singapore " + response.data[3].properties.ADDRESSPOSTALCODE, response.data[3].properties.HYPERLINK, response.data[3].properties.PHOTOURL],
+          [response.data[4].properties.Name, response.data[4].properties.ADDRESSBLOCKHOUSENUMBER + " " + response.data[4].properties.ADDRESSSTREETNAME + " Singapore " + response.data[4].properties.ADDRESSPOSTALCODE, response.data[4].properties.HYPERLINK, response.data[4].properties.PHOTOURL], Book, "library"])
         console.log(topLibraries);
         console.log(display);
         setLoading(false)
@@ -133,63 +136,78 @@ function Activities() {
 
   useEffect(() => {
     console.log(filter)
-    if(filter === "library" && isLoading === false){
+    if (filter === "library" && isLoading === false) {
       setDisplay(topLibraries)
+      setState3(true)
+      setState1(false)
+      setState2(false)
       setRendering(false)
     }
-    else if(filter === "hawker"){
+    else if (filter === "hawker") {
       setDisplay(topHawkers)
-      console.log(display)
+      setState2(true)
+      setState3(false)
+      setState1(false)
     }
-    else if(filter === "fitness"){
+    else if (filter === "fitness") {
       setDisplay(topFitness)
-      console.log(display)
+      setState1(true)
+      setState2(false)
+      setState3(false)
     }
   }, [filter, isLoading]);
 
-  // //hawker
-  // useEffect(() => {
-  //   axios.post("https://silverfun-backend.limsui.repl.co", hawkerForm, hawkeroptions)
-  //     .then(response => {
-  //       console.log("hawker");
-  //       console.log(response.data);
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // },[])
-
-  //fitness
-
-  // useEffect(() => {
-  //   axios.post("https://silverfun-backend.limsui.repl.co", fitnessForm, fitnessoptions)
-  //     .then(response => {
-  //       console.log("fitness");
-  //       console.log(response.data);
-        
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // }, [])
+  useEffect(() => {
+    console.log("address from search bar")
+    console.log(toRender)
+    setMapsReady(false)
+  }, [mapsReady]);
 
 
-  return (
-    <div>
 
-      <Header />
-      <div className="flex h-min">
-        <p className="text-center m-auto ">
-          <h1 className="mb-2">Activities</h1>
-          <body>Find out more about fun and enriching activities around you!</body>
+// //hawker
+// useEffect(() => {
+//   axios.post("https://silverfun-backend.limsui.repl.co", hawkerForm, hawkeroptions)
+//     .then(response => {
+//       console.log("hawker");
+//       console.log(response.data);
+//     })
+//     .catch(error => {
+//       console.log(error);
+//     });
+// },[])
 
-          <br />
-          <div className="w-max-3xl">
-            <GMaps url1={url1} url2={url2} url3={url3} state1={state1} state2={state2} state3={state3} className="w-max-3xl" />
-          </div>
-          <br />
+//fitness
 
-          {/* <div class="align middle">
+// useEffect(() => {
+//   axios.post("https://silverfun-backend.limsui.repl.co", fitnessForm, fitnessoptions)
+//     .then(response => {
+//       console.log("fitness");
+//       console.log(response.data);
+
+//     })
+//     .catch(error => {
+//       console.log(error);
+//     });
+// }, [])
+
+
+return (
+  <div>
+
+    <Header />
+    <div className="flex h-min">
+      <p className="text-center m-auto ">
+        <h1 className="mb-2">Activities</h1>
+        <body>Find out more about fun and enriching activities around you!</body>
+
+        <br />
+        <div className="w-max-3xl">
+          <GMaps url1={url1} url2={url2} url3={url3} state1={state1} state2={state2} state3={state3} className="w-max-3xl" />
+        </div>
+        <br />
+
+        {/* <div class="align middle">
             <input
               class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 w-72 rounded-lg text-sm focus:outline-none shadow"
               type="text"
@@ -198,75 +216,75 @@ function Activities() {
               name="s" />
           </div> */}
 
-          <br />
-          <div class="inline-flex space-x-9">
-            <button class={`bg-white h-10 px-5 rounded-lg flex items-center text-center text-md rounded-md + ${filter === "library" ? 'border-2 border-gray-400 shadow-inner' : 'hover:scale-105 transition-all duration-150 ease-linear drop-shadow-lg'}`} onClick={event => setFilter("library")} >
-              <div class="flex flex-row space-x-1">
-                <img src={Book} class="object-scale-down h-25 w-7" />
-                <div>Libraries</div>
-              </div>
-            </button>
-            <button class={`bg-white h-10 px-5 rounded-lg flex items-center text-center text-md rounded-md + ${filter === "hawker" ? 'border-2 border-gray-400 shadow-inner' : 'hover:scale-105 transition-all duration-150 ease-linear drop-shadow-lg'}`} onClick={event => setFilter("hawker")} >
-              <div class="flex flex-row space-x-1">
-                <img src={Food} class="object-scale-down h-25 w-7" />
-                <div>Hawker Centres</div>
-              </div>
-            </button>
+        <br />
+        <div class="inline-flex space-x-9">
+          <button class={`bg-white h-10 px-5 rounded-lg flex items-center text-center text-md rounded-md + ${filter === "library" ? 'border-2 border-gray-400 shadow-inner' : 'hover:scale-105 transition-all duration-150 ease-linear drop-shadow-lg'}`} onClick={event => setFilter("library")} >
+            <div class="flex flex-row space-x-1">
+              <img src={Book} class="object-scale-down h-25 w-7" />
+              <div>Libraries</div>
+            </div>
+          </button>
+          <button class={`bg-white h-10 px-5 rounded-lg flex items-center text-center text-md rounded-md + ${filter === "hawker" ? 'border-2 border-gray-400 shadow-inner' : 'hover:scale-105 transition-all duration-150 ease-linear drop-shadow-lg'}`} onClick={event => setFilter("hawker")} >
+            <div class="flex flex-row space-x-1">
+              <img src={Food} class="object-scale-down h-25 w-7" />
+              <div>Hawker Centres</div>
+            </div>
+          </button>
 
-            <button class={`bg-white h-10 px-5 rounded-lg flex items-center text-center text-md rounded-md + ${filter === "fitness" ? 'border-2 border-gray-400 shadow-inner' : 'hover:scale-105 transition-all duration-150 ease-linear drop-shadow-lg'}`} onClick={event => setFilter("fitness")} >
-              <div class="flex flex-row space-x-1">
-                <img src={Squats} class="object-scale-down h-25 w-7" />
-                <div>Fitness Facilities</div>
-              </div>
-            </button>
+          <button class={`bg-white h-10 px-5 rounded-lg flex items-center text-center text-md rounded-md + ${filter === "fitness" ? 'border-2 border-gray-400 shadow-inner' : 'hover:scale-105 transition-all duration-150 ease-linear drop-shadow-lg'}`} onClick={event => setFilter("fitness")} >
+            <div class="flex flex-row space-x-1">
+              <img src={Squats} class="object-scale-down h-25 w-7" />
+              <div>Fitness Facilities</div>
+            </div>
+          </button>
 
-          </div>
-          {isRendering ? <div>Loading</div> : <div>
-      {console.log('display')}
+        </div>
+        {isRendering ? <div>Loading</div> : <div>
+          {console.log('display')}
           {console.log(display)}
-            <br />
-            <Link to={"/ActivityDetails"}
-              state={{ name: display[0][0], address: display[0][1], link: display[0][2], photo: display[0][3], type: display[6]}}
-            >
-              <Boxes icon={display[5]} text1={display[0][0]} text2={display[0][1]} time="20 Min"></Boxes>
-            </Link>
-            <br />
-            <Link to={"/ActivityDetails"}
-              state={{ name: display[1][0], address: display[1][1], link: display[1][2] , photo: display[1][3], type: display[6]}}
-            >
-              <Boxes icon={display[5]} text1={display[1][0]} text2={display[1][1]} time="23 Min"></Boxes></Link>
-            <br />
-            <Link to={"/ActivityDetails"}
-              state={{ name: display[2][0], address: display[2][1], link: display[2][2] , photo: display[2][3], type: display[6]}}
-            >
-              <Boxes icon={display[5]} text1={display[2][0]} text2={display[2][1]} time="25 Min"></Boxes>
-            </Link>
-            <br />
-            <Link to={"/ActivityDetails"}
-              state={{ name: display[3][0], address: display[3][1], link: display[3][2] , photo: display[3][3], type: display[6]}}
-            >
-              <Boxes icon={display[5]} text1={display[3][0]} text2={display[3][1]} time="25 Min"></Boxes></Link>
-            <br />
-            <Link to={"/ActivityDetails"}
-              state={{ name: display[4][0], address: display[4][1], link: display[4][2] , photo: display[4][3], type: display[6]}}
-            >
-              <Boxes icon={display[5]} text1={display[4][0]} text2={display[4][1]} time="25 Min"></Boxes>
-            </Link>
-            <br />
-
-          </div>}
-
-
-          <body> 1 of 5 </body>
-          <button class="text-sm hover:scale-105 "> Next {'>'} </button>
+          <br />
+          <Link to={"/ActivityDetails"}
+            state={{ name: display[0][0], address: display[0][1], link: display[0][2], photo: display[0][3], type: display[6] }}
+          >
+            <Boxes icon={display[5]} text1={display[0][0]} text2={display[0][1]} time="20 Min"></Boxes>
+          </Link>
+          <br />
+          <Link to={"/ActivityDetails"}
+            state={{ name: display[1][0], address: display[1][1], link: display[1][2], photo: display[1][3], type: display[6] }}
+          >
+            <Boxes icon={display[5]} text1={display[1][0]} text2={display[1][1]} time="23 Min"></Boxes></Link>
+          <br />
+          <Link to={"/ActivityDetails"}
+            state={{ name: display[2][0], address: display[2][1], link: display[2][2], photo: display[2][3], type: display[6] }}
+          >
+            <Boxes icon={display[5]} text1={display[2][0]} text2={display[2][1]} time="25 Min"></Boxes>
+          </Link>
+          <br />
+          <Link to={"/ActivityDetails"}
+            state={{ name: display[3][0], address: display[3][1], link: display[3][2], photo: display[3][3], type: display[6] }}
+          >
+            <Boxes icon={display[5]} text1={display[3][0]} text2={display[3][1]} time="25 Min"></Boxes></Link>
+          <br />
+          <Link to={"/ActivityDetails"}
+            state={{ name: display[4][0], address: display[4][1], link: display[4][2], photo: display[4][3], type: display[6] }}
+          >
+            <Boxes icon={display[5]} text1={display[4][0]} text2={display[4][1]} time="25 Min"></Boxes>
+          </Link>
           <br />
 
-        </p>
-      </div>
+        </div>}
 
-      <Footer />
+
+        {/* <body> 1 of 5 </body>
+          <button class="text-sm hover:scale-105 "> Next {'>'} </button> */}
+        <br />
+
+      </p>
     </div>
-  );
+
+    <Footer />
+  </div>
+);
 
 }
 export default Activities;

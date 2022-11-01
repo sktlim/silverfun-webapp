@@ -4,7 +4,7 @@ import profilePlaceholder from "../assets/images/profilePlaceholder.png"
 
 const FooterProfile = () => {
   return (
-        <div className={`border border-black w-44 h-min flex flex-col items-center`}>
+        <div className={`border border-black w-44 h-56 flex flex-col items-center`}>
         <img src={profilePlaceholder} className="h-13 py-3 px-10" alt="profile"/>
         <text className={`font-["RubikBold"] text-lg`}>
           Sam Tan

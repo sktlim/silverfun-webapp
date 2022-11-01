@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     GoogleMap,
     useLoadScript,
@@ -21,7 +21,7 @@ import {
 
 // import "@reach/combobox/styles.css";
 import mapStyles from "../Styles/mapStyles";
-import compass from "../assets/icons/compass-svgrepo-com.svg";
+import compass from "../assets/icons/compass.svg";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -37,11 +37,18 @@ const center = {
     lat: 1.3521,
     lng: 103.8198,
 };
-export default function GMaps(url1, state1, url2, state2, url3, state3) {
+
+
+
+export default function GMaps(url1, state1, url2, state2, url3, state3, setToRender, setMapsReady) {
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GMAPS_API_KEY,
         libraries,
     });
+
+    // addressToRender;
+    // console.log(addressToRender);
+    // const [addressToRender, setAddressToRender] = useState()
     // const [markers, setMarkers] = React.useState([]);
     // const [selected, setSelected] = React.useState(null);
 
@@ -71,6 +78,41 @@ export default function GMaps(url1, state1, url2, state2, url3, state3) {
         mapRef.current.setZoom(14);
     }, []);
 
+    
+    
+    const {
+        ready,
+        value,
+        suggestions: { status, data },
+        setValue,
+        clearSuggestions,
+    } = usePlacesAutocomplete({
+        requestOptions: {
+            location: { lat: () => 1.3521, lng: () => 103.8198 },
+            radius: 50 * 1000,
+        },
+    });
+
+    // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
+
+    const handleInput = (e) => {
+        setValue(e.target.value);
+    };
+
+    const handleSelect = async (address) => {
+        setValue(address, false);
+        clearSuggestions();
+
+        try {
+            const results = await getGeocode({ address });
+            const { lat, lng } = await getLatLng(results[0]);
+            // setToRender({ lat, lng });
+            setMapsReady(true);
+            panTo({ lat, lng });
+        } catch (error) {
+            console.log("Error: ", error);
+        }
+    };
     if (loadError) return "Error";
     if (!isLoaded) return "Loading...";
 
@@ -129,8 +171,28 @@ export default function GMaps(url1, state1, url2, state2, url3, state3) {
         ) : null} */}
                 </GoogleMap>
             </div>
-            <div classname="m-4" >
-                <Search panTo={panTo} />
+            <div classname="mt-4" >
+            <div class="flex justify-center bg-white">
+            <div className="flex justify-center border-2 border-gray-300 h-10 w-72 rounded-lg text-sm focus:outline-none shadow items-center mt-5">
+                <Combobox onSelect={(handleSelect)}>
+                    <ComboboxInput
+                        value={value}
+                        onChange={handleInput}
+                        disabled={!ready}
+                        className="text-center"
+                        placeholder="Search your location"
+                    />
+                    <ComboboxPopover className="bg-white">
+                        <ComboboxList>
+                            {status === "OK" &&
+                                data.map(({ id, description }) => (
+                                    <ComboboxOption key={id} value={description} />
+                                ))}
+                        </ComboboxList>
+                    </ComboboxPopover>
+                </Combobox>
+            </div>
+        </div>
 
             </div>
 
@@ -139,9 +201,9 @@ export default function GMaps(url1, state1, url2, state2, url3, state3) {
 }
 
 function Locate({ panTo }) {
-    return (
+    return (<div className="w-full flex justify-center">
         <button
-            className="w-auto h-40px"
+            className="w-max flex"
             onClick={() => {
                 navigator.geolocation.getCurrentPosition(
                     (position) => {
@@ -154,73 +216,78 @@ function Locate({ panTo }) {
                 );
             }}
         >
-            <img classname="w-auto p-2 z-10" src={compass} alt="compass" />
-        </button>
+            <img classname="p-2 z-10 px-10" src={compass} alt="compass" />
+            <p classname="w-max mx-10 text-sm">Pan to current location</p>
+        </button></div>
     );
 }
 
-function Search({ panTo }) {
-    const {
-        ready,
-        value,
-        suggestions: { status, data },
-        setValue,
-        clearSuggestions,
-    } = usePlacesAutocomplete({
-        requestOptions: {
-            location: { lat: () => 1.3521, lng: () => 103.8198 },
-            radius: 50 * 1000,
-        },
-    });
 
-    // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
 
-    const handleInput = (e) => {
-        setValue(e.target.value);
-    };
+// function Search({ panTo}) {
+//     const {
+//         ready,
+//         value,
+//         suggestions: { status, data },
+//         setValue,
+//         clearSuggestions,
+//     } = usePlacesAutocomplete({
+//         requestOptions: {
+//             location: { lat: () => 1.3521, lng: () => 103.8198 },
+//             radius: 50 * 1000,
+//         },
+//     });
 
-    const handleSelect = async (address) => {
-        setValue(address, false);
-        clearSuggestions();
+//     // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
 
-        try {
-            const results = await getGeocode({ address });
-            const { lat, lng } = await getLatLng(results[0]);
-            panTo({ lat, lng });
-        } catch (error) {
-            console.log("Error: ", error);
-        }
-    };
+//     const handleInput = (e) => {
+//         setValue(e.target.value);
+//     };
 
-    return (
-        // <div class="align middle">
-        //     <input
-        //       class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 w-72 rounded-lg text-sm focus:outline-none shadow"
-        //       type="text"
-        //       id="header-search"
-        //       placeholder="Search for activities near you"
-        //       name="s" />
-        //   </div>
-        <div class="flex justify-center bg-white">
-            <div className="flex justify-center border-2 border-gray-300 h-10 w-72 rounded-lg text-sm focus:outline-none shadow">
-                <Combobox onSelect={handleSelect}>
-                    <ComboboxInput
-                        value={value}
-                        onChange={handleInput}
-                        disabled={!ready}
-                        className="text-center"
-                        placeholder="Search your location"
-                    />
-                    <ComboboxPopover>
-                        <ComboboxList>
-                            {status === "OK" &&
-                                data.map(({ id, description }) => (
-                                    <ComboboxOption key={id} value={description} />
-                                ))}
-                        </ComboboxList>
-                    </ComboboxPopover>
-                </Combobox>
-            </div>
-        </div>
-    );
-}
+//     const handleSelect = async (address) => {
+//         setValue(address, false);
+//         clearSuggestions();
+
+//         try {
+//             const results = await getGeocode({ address });
+//             const { lat, lng } = await getLatLng(results[0]);
+//             setToRender({ lat, lng });
+//             setMapsReady(true);
+//             panTo({ lat, lng });
+//         } catch (error) {
+//             console.log("Error: ", error);
+//         }
+//     };
+
+//     // return (
+//     //     // <div class="align middle">
+//     //     //     <input
+//     //     //       class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 w-72 rounded-lg text-sm focus:outline-none shadow"
+//     //     //       type="text"
+//     //     //       id="header-search"
+//     //     //       placeholder="Search for activities near you"
+//     //     //       name="s" />
+//     //     //   </div>
+//     //     <div class="flex justify-center bg-white">
+//     //         <div className="flex justify-center border-2 border-gray-300 h-10 w-72 rounded-lg text-sm focus:outline-none shadow items-center mt-5">
+//     //             <Combobox onSelect={handleSelect}>
+//     //                 <ComboboxInput
+//     //                     value={value}
+//     //                     onChange={handleInput}
+//     //                     disabled={!ready}
+//     //                     className="text-center"
+//     //                     placeholder="Search your location"
+//     //                 />
+//     //                 <ComboboxPopover className="bg-white">
+//     //                     <ComboboxList>
+//     //                         {status === "OK" &&
+//     //                             data.map(({ id, description }) => (
+//     //                                 <ComboboxOption key={id} value={description} />
+//     //                             ))}
+//     //                     </ComboboxList>
+//     //                 </ComboboxPopover>
+//     //             </Combobox>
+//     //         </div>
+//     //     </div>
+//     // );
+// }

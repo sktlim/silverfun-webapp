@@ -53,7 +53,7 @@ function Notifications() {
               </div>
               <br></br>
 
-              <div class="w-full text-black flex items-center justify-between">
+              <div class="w-full text-black flex items-center justify-between space-x-3">
                 <h5>Upcoming healthcare appointment</h5>
                 <div>
                   <React.Fragment>
@@ -101,18 +101,20 @@ function Notifications() {
             </div>
           </p>
 
-        </div>
-        <Link to="/Home">
-          <Stack direction="row" spacing={4}>
-            <Button style={{ marginLeft: 1050 }} variant="outlined" color="error">Cancel</Button>
-            <Button variant="contained" color="success">Save Changes</Button>
-          </Stack>
-        </Link>
-        <br></br>
-        <br></br>
-        <Footer />
-      </div>
-
-  );
+    </div>
+    <br/>
+    <Link to="/Home">
+      <Stack direction="row" spacing={4}>
+        <Button style={{ marginLeft: 1050 }} variant="outlined" class = "bg-white hover:drop-shadow-lg p-2 rounded-lg">Cancel</Button>
+        <Button variant="contained" class = "bg-yellow rounded-lg text-md p-2 hover:drop-shadow-lg" >Save Changes</Button>
+      </Stack>
+    </Link>
+    <br></br>
+    <br></br>
+    <Footer />
+    </div>
+    
+    </router>
+    );
 }
 export default Notifications;

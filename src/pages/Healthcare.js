@@ -22,8 +22,8 @@ function Healthcare() {
   const url2 = 'https://storage.googleapis.com/swe-silverfun-app.appspot.com/ELDERCARE.kml';
   const url3 = 'https://storage.googleapis.com/swe-silverfun-app.appspot.com/AED_Locations.kml';
 
-  const [state1, setState1] = React.useState(true);
-  const [state2, setState2] = React.useState(false);
+  const [state1, setState1] = React.useState(false);
+  const [state2, setState2] = React.useState(true);
   const [state3, setState3] = React.useState(false);
 
   const [filter, setFilter] = React.useState("eldercare");
@@ -33,18 +33,18 @@ function Healthcare() {
   const [topEldercare, setTopEldercare] = React.useState(null);
 
   const topPharmacies = ([
-  ["name", "address", "link", "photourl"],
-  ["name", "address", "link", "photourl"],
-  ["name", "address", "link", "photourl"],
-  ["name", "address", "link", "photourl"],
-  ["name", "address", "link", "photourl"], Pharmacy, "pharmacy"])
+  ["National Healthcare Group Pharmacy (Pioneer)", "26 Jurong West Street 61, Singapore 648201", "https://www.nup.com.sg/Pages/Our%20Clinics/our-clinics-pioneerp.aspx", "https://www.healthcare.com.sg/wp-content/uploads/2020/09/pioneer-polyclinic.jpg"],
+  ["Jurong Medical Centre Pharmacy", "60 Jurong West Central 3, Singapore 648346", "https://www.nuhs.edu.sg/Care-in-the-Community/JMC/Pages/default.aspx", "https://www.healthcare.com.sg/wp-content/uploads/cache/images/2022/09/jurong-medical-centre/jurong-medical-centre-3326711444.jpg"],
+  ["Guardian Pharmacy (Jurong Point 2)", "63 Jurong West Central 3, JP2, #B1- 27/28, 648331", "https://www.guardian.com.sg/", "https://media.karousell.com/media/photos/products/2020/12/8/guardian_health__beauty_1607396157_de4b2d86"],
+  ["UNITY By FairPrice (UHJPT) Hyper Jurong Point", " 63 Jurong West Central 3, #03 - 01 Jurong Point, Singapore 648331", "https://unity.com.sg/", "https://findd.sg/custom/domain_1/image_files/sitemgr_photo_6492.jpg"],
+  ["UNITY By FairPrice (JPT)", "1 Jurong West Central 2, #B1-9, Singapore 648886", "https://unity.com.sg/", "https://www.fairprice.com.sg/wp-content/uploads/2020/10/Unity-970x585-1.jpg"], Pharmacy, "pharmacy"])
 
   const topCovid = ([
-    ["name", "address", "link", "photourl"],
-    ["name", "address", "link", "photourl"],
-    ["name", "address", "link", "photourl"],
-    ["name", "address", "link", "photourl"],
-    ["name", "address", "link", "photourl"], Coronavirus, "covid"])
+    ["FAITH Clinic (Jurong West)", "762 Jurong West Street 75, Gek Poh Shopping Centre #02-256D, Singapore 640762", "https://www.faithmedical.sg/", "https://www.healthcare.com.sg/wp-content/uploads/2020/01/faith%E2%80%8B-clinic-jurong-west.jpg"],
+    ["Hisemainn Medical Clinic", "276 Jurong West Street 25 #01-06, 640276", "https://www.healthhub.sg/directory/14/58398/hisemainn-medical-clinic--jurong-west-", "https://www.healthcare.com.sg/wp-content/uploads/cache/images/2022/09/hisemainn-medical-clinic-jurong-west/hisemainn-medical-clinic-jurong-west-3759265268.jpg"],
+    ["Acumed Medical Group Jurong Point", "1 Jurong West Central 2, #B1A-19E, Jurong Point Shopping Centre, Singapore 648886", "https://acumed.com.sg/our_clinic/jurong-west/", "https://mcmscd.mercatus.com.sg/en/-/media/377A4E1FADB24F02AEE43D6CB3761D7A.ashx?rev=26dd9227c4354ae6afbcf85b227880ff&w=768&h=576"],
+    ["Healthmark Pioneer Mall Clinic", "638 Jurong West Street 61, Pioneer Mall #02-08, Singapore 640638", "https://www.healthmark.com.sg/", "https://nestia-food.obs.ap-southeast-3.myhuaweicloud.com/201609/26/6792c5e6a290dcbe50b73c582c953a66.jpg"],
+    ["TC Family Clinic Pte. Ltd.", "526 Jurong West Street 52, #01-325, Singapore 640526", "https://www.tcfamilyclinic.com/", "https://lh5.googleusercontent.com/p/AF1QipP_e0f8AOkxTSxlLfrZK815q6iHKM3U71sCgY6s=w408-h269-k-no"], Coronavirus, "covid"])
 
   const loadingOptions = ([
   ["loading", "loading", "loading"],
@@ -94,14 +94,23 @@ function Healthcare() {
     console.log(filter)
     if(filter === "eldercare" && isLoading === false){
       setDisplay(topEldercare)
+      setState1(false)
+      setState2(true)
+      setState3(false)
       setRendering(false)
     }
     else if(filter === "pharmacy"){
       setDisplay(topPharmacies)
+      setState1(true)
+      setState2(false)
+      setState3(false)
       console.log(display)
     }
     else if(filter === "covid"){
       setDisplay(topCovid)
+      setState1(false)
+      setState2(false)
+      setState3(true)
       console.log(display)
     }
   }, [filter, isLoading]);
@@ -113,8 +122,8 @@ function Healthcare() {
     <Header />
     <div className = "flex h-min">
         <p className = "text-center m-auto">
-          <h1>Healthcare Services</h1>
-          <body>Find out more about healthcare services you might need around <br />you, and other necessary information like details on how to make appointments!</body>
+          <h1 className = "mb-2">Healthcare Services</h1>
+          <body>Find out more about healthcare services you might need around you, and other necessary information like details on <br/> how to make appointments!</body>
 
           <br />
           <div class="justify-center">
@@ -182,8 +191,8 @@ function Healthcare() {
 
           </div>}
 
-          <body> 1 of 5 </body>
-          <button class="text-sm hover:scale-105 "> Next {'>'} </button>
+          {/* <body> 1 of 5 </body>
+          <button class="text-sm hover:scale-105 "> Next {'>'} </button> */}
           <br />
         </p>
       </div>
