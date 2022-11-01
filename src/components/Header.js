@@ -4,18 +4,18 @@ import ProfileIcon from "../assets/icons/profile.svg"
 import Button from "./Button";
 import { Link } from "react-router-dom";
 import ProfileMenu from "./ProfileMenu";
-import {AuthProvider, useAuth} from "../AuthContext"
+import { AuthProvider, useAuth } from "../AuthContext"
 
 const Header = () => {
   const [showProfile, setShowProfile] = useState(false);
-  const {currentUser} = useAuth()
+  const { currentUser } = useAuth()
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    if (currentUser === null){
+    if (currentUser === null) {
       setIsLoggedIn(false)
     }
-    else{
+    else {
       setIsLoggedIn(true)
     }
   }, [currentUser]);
@@ -49,25 +49,26 @@ const Header = () => {
           className={`p-8 + ${window.location.pathname === "/AboutUs" ? 'underline' : ''}`}>
           ABOUT US
         </Link>
-        <button
-          className={`border-2 border-black text-lg ml-4 px-5 pr-6 py-3 text-black flex items-center rounded-md  hover:scale-105 transition-all duration-150 ease-linear bg-white drop-shadow-lg + ${showProfile ? 'border-white drop-shadow-xl rounded-br-none rounded-bl-none hover:scale-100' : ''}`}
-          onClick={event => setShowProfile(!showProfile)}
-        >
-          <img src={ProfileIcon} />
-          <text className="ml-2">
-            PROFILE
-          </text>
-        </button>:
-        <button
-        className={`text-lg ml-4 px-5 pr-6 py-3 text-black flex items-center rounded-md  hover:scale-105 transition-all duration-150 ease-linear bg-yellow drop-shadow-lg`}
-        onClick={event => window.location.href='/Login'}
-      >
-        <text>
-          LOGIN
-        </text>
-      </button>
+        {isLoggedIn ?
+          <button
+            className={`border-2 border-black text-lg ml-4 px-5 pr-6 py-3 text-black flex items-center rounded-md  hover:scale-105 transition-all duration-150 ease-linear bg-white drop-shadow-lg + ${showProfile ? 'border-white drop-shadow-xl rounded-br-none rounded-bl-none hover:scale-100' : ''}`}
+            onClick={event => setShowProfile(!showProfile)}
+          >
+            <img src={ProfileIcon} />
+            <text className="ml-2">
+              PROFILE
+            </text>
+          </button> :
+          <button
+            className={`text-lg ml-4 px-5 pr-6 py-3 text-black flex items-center rounded-md  hover:scale-105 transition-all duration-150 ease-linear bg-yellow drop-shadow-lg`}
+            onClick={event => window.location.href = '/Login'}
+          >
+            <text>
+              LOGIN
+            </text>
+          </button>
         }
-              </div>
+      </div>
     </div>
   );
 };
