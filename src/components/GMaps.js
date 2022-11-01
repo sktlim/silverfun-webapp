@@ -242,6 +242,7 @@ function Search({ panTo}) {
         requestOptions: {
             location: { lat: () => 1.3521, lng: () => 103.8198 },
             radius: 50 * 1000,
+            componentRestrictions: { country: "sg" }
         },
     });
 
