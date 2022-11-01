@@ -78,7 +78,7 @@ export default function GMaps(url1, state1, url2, state2, url3, state3) {
         <div>
             {console.log(url1)}
             <Locate panTo={panTo} />
-            <div>
+            <div className="mb-4">
                 <GoogleMap
                     id="map"
                     mapContainerStyle={mapContainerStyle}
@@ -129,7 +129,7 @@ export default function GMaps(url1, state1, url2, state2, url3, state3) {
         ) : null} */}
                 </GoogleMap>
             </div>
-            <div classname="mt-4" >
+            <div classname="m-4" >
                 <Search panTo={panTo} />
 
             </div>
@@ -141,7 +141,7 @@ export default function GMaps(url1, state1, url2, state2, url3, state3) {
 function Locate({ panTo }) {
     return (
         <button
-            className="w-auto h-auto"
+            className="w-auto h-40px"
             onClick={() => {
                 navigator.geolocation.getCurrentPosition(
                     (position) => {
@@ -154,7 +154,7 @@ function Locate({ panTo }) {
                 );
             }}
         >
-            <img classname="w-auto h-4 p-2 z-10" src='{compass}' alt="compass" />
+            <img classname="w-auto p-2 z-10" src={compass} alt="compass" />
         </button>
     );
 }

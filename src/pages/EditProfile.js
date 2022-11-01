@@ -77,16 +77,17 @@ function EditProfile() {
       <div className="flex h-screen">
         <div className="">
           <div></div>
-          <div className="flex-col">
-            <h1>Edit Profile</h1>
-            <h2>Name</h2>
+          <div className="flex-col m-4">
+            <h1 className="m-4">Edit Profile</h1>
+            <h2 className="m-4">Name</h2>
+            <TextField fullWidth id="name" label="Name" variant="outlined" />
 
-            <h2>Email</h2>
+            <h2 className="m-4">Email</h2>
             <TextField fullWidth id="email" label="Please Enter New Email" variant="outlined" defaultValue={currentUser.email}
               onChange={(event) => {
                 setLoginEmail(event.target.value);
               }} />
-            <h2>Password</h2>
+            <h2 className="m-4">Password</h2>
             <TextField fullWidth id="email" label="Please Enter New Password" variant="outlined"
               onChange={(event) => {
                 setLoginPassword(event.target.value);
