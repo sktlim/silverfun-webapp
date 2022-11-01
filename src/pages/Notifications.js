@@ -46,8 +46,13 @@ function Notifications() {
           <h1>Alerts and Notifications</h1>
           <br></br>
           <br></br>
-          <Button classNames={'w-fit bg-white mb-6 drop-shadow-none border border-black opacity-50 text-lg'} text="Notify" onClickHandler={() => notification1()} />
-          <div>
+          <div className="bg-blue-100 h-min w-full m-auto rounded-2xl drop-shadow-lg flex p-7">
+            <div class = "flex-col w-full m-auto">
+              <div class = "inline-block align-middle">
+          <Button classNames={'w-fit bg-white h-12 border border-black opacity-50 text-lg hover:drop-shadow-lg'} text="Notify Me" onClickHandler={() => notification1()} />
+          </div>
+          <br/>
+          <div><br/>
             <div class="w-full text-black flex items-center justify-between">
               <h2>Alerts</h2>
             </div>
@@ -99,16 +104,24 @@ function Notifications() {
               </div>
             </div>
           </div>
+          </div>
+          </div>
         </p>
 
       </div>
+      
       <br />
-      <Link to="/Home">
-        <Stack direction="row" spacing={4}>
-          <Button style={{ marginLeft: 1050 }} variant="outlined" class="bg-white hover:drop-shadow-lg p-2 rounded-lg">Cancel</Button>
-          <Button variant="contained" class="bg-yellow rounded-lg text-md p-2 hover:drop-shadow-lg" >Save Changes</Button>
-        </Stack>
-      </Link>
+      
+        <Link to="/Home"><div class = "float-right pr-36">
+          <div class = "flex flex-row space-x-4 max-w-max">
+            
+            <button class="bg-white rounded-lg text-md p-2 hover:bg-yellow drop-shadow-lg" >Save Changes</button>
+            <button class="bg-white p-2 rounded-lg drop-shadow-lg hover:bg-red-700 ">Cancel</button>
+          </div>
+          </div>
+        </Link>
+        
+      <br/>
       <br></br>
       <br></br>
       <Footer />
