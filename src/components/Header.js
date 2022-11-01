@@ -49,8 +49,7 @@ const Header = () => {
           className={`p-8 + ${window.location.pathname === "/AboutUs" ? 'underline' : ''}`}>
           ABOUT US
         </Link>
-        {
-          isLoggedIn ? <button
+        <button
           className={`border-2 border-black text-lg ml-4 px-5 pr-6 py-3 text-black flex items-center rounded-md  hover:scale-105 transition-all duration-150 ease-linear bg-white drop-shadow-lg + ${showProfile ? 'border-white drop-shadow-xl rounded-br-none rounded-bl-none hover:scale-100' : ''}`}
           onClick={event => setShowProfile(!showProfile)}
         >
