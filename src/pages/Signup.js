@@ -6,6 +6,8 @@ import Footer from "../components/Footer";
 import { Alert } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext"
+import { ReactNotifications, Store } from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
 
 
 function Signup() {
@@ -37,6 +39,19 @@ function Signup() {
       navigate("/Login");
     } catch (error) {
       setError(error.message);
+      Store.addNotification({
+        title: "Error",
+        message: error.message,
+        type: "danger",
+        insert: "top",
+        container: "top-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 4000,
+          onScreen: true
+        }
+      });
     }
   };
 
@@ -44,6 +59,7 @@ function Signup() {
   return (
     <div>
       <Header />
+      <ReactNotifications />
       {error && <Alert color="red">{error}</Alert> /* FIX THIS */}
       <div className="flex-vertical h-30 align-middle mb-5">
         <h1 className="text-center m-auto text-yellow">
@@ -84,6 +100,11 @@ function Signup() {
                 }}
               />
               <button class=" mt-10 bg-white h-15 w-full rounded-lg align-middle items-center justify-center text-2xl rounded-md  hover:scale-105 transition-all duration-150 ease-linear drop-shadow-lg" onClick={register}>Sign up</button>
+              <div className="mt-4">
+                <p>
+                  Already on SilverFun? <a href="/Login" className="text-blue-700">Log in</a>
+                </p>
+              </div>
             </div>
           </div>
         </div>

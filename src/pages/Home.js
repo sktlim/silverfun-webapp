@@ -15,6 +15,8 @@ import PlaceholderMap from "../assets/images/SGmap.svg"
 import ActivityFlags from "../assets/images/ActivitesIcons.svg"
 import HealthcareFlags from "../assets/images/HealthcareIcons.svg"
 import React, { useState } from 'react'
+import { ReactNotifications, Store } from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
 import eldercarePic from "../assets/images/eldercarePic.jpg"
 import gymPic from "../assets/images/ActiveSGgym.jpg"
 import libraryPic from "../assets/images/nlb.jpg"
@@ -35,6 +37,7 @@ function Home() {
     <div>
       <div className="relative bg-blue-100 h-min pb-20">
         <Header />
+        <ReactNotifications />
         <div className="absolute w-full flex justify-end">
           <AED />
         </div>
