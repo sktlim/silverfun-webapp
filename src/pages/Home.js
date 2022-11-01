@@ -15,6 +15,9 @@ import PlaceholderMap from "../assets/images/SGmap.svg"
 import ActivityFlags from "../assets/images/ActivitesIcons.svg"
 import HealthcareFlags from "../assets/images/HealthcareIcons.svg"
 import React, { useState } from 'react'
+import eldercarePic from "../assets/images/eldercarePic.jpg"
+import gymPic from "../assets/images/ActiveSGgym.jpg"
+import libraryPic from "../assets/images/nlb.jpg"
 
 function Home() {
   const url1 = 'https://storage.googleapis.com/swe-silverfun-app.appspot.com/gyms-sg-kml.kml';
@@ -68,27 +71,34 @@ function Home() {
 
           <RecommendedItem
             timing="3"
-            title="Neighbourhood Fitness Corner"
+            title="Jurong West ActiveSG Gym"
             description="Clock in some exercises with the equipments available!"
-            type="Fitness"
-            pic={recommendationPic}
-            onClickHandler={event => window.location.href = '/ActivityDetails'}
+            type="fitness"
+            pic={gymPic}
+            linkTo='/ActivityDetails'
+            address= "20 Jurong West Street 93 Singapore 648965"
+            url = "https://www.myactivesg.com/facilities/jurong-west-activesg-gym"
           />
+          
           <RecommendedItem
             timing="10"
-            title="National University Hospital"
-            description="Book an appointment for your regular health checkup."
-            type="Hospital"
-            pic={recommendationPic}
-            onClickHandler={event => window.location.href = '/HealthcareDetails'}
+            title="Jurong West Public Library"
+            description="Browse and enjoy the extensive collection of books here! "
+            type="library"
+            pic={libraryPic}
+            linkTo='/ActivityDetails'
+            address= "60 Jurong West Central 3 Singapore 648346"
+            url = "http://www.nlb.gov.sg/VisitUs/BranchDetails/tabid/140/bid/302/Default.aspx?branch=Jurong+West+Public+Library"
           />
           <RecommendedItem
             timing="15"
-            title="Clementi Public Library"
-            description="Browse and enjoy the extensive collection of books here! "
-            type="Library"
-            pic={recommendationPic}
-            onClickHandler={event => window.location.href = '/ActivityDetails'}
+            title="THK SAC @ Boon Lay"
+            description="Book an appointment for your regular health checkup."
+            type="eldercare"
+            pic={eldercarePic}
+            linkTo='/HealthcareDetails'
+            address= "Blk 190 Boon Lay Drive #01-242 Singapore 640190"
+            url = ""
           />
         </div>
         <HealthStats />
