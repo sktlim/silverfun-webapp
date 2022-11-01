@@ -12,13 +12,13 @@ function Notifications() {
     <div>
     <Header />
     
-    <div className = "flex h-screen">
+    <div>
         <p className = "text-center m-auto">
           <h1>Alerts and Notifications</h1>
           <br></br>
           <br></br>
 
-          <div className="bg-blue-100 h-min w-full m-auto rounded-2xl drop-shadow-lg flex p-7">
+          <div className="bg-blue-100 h-min w-3/5 m-auto rounded-2xl drop-shadow-lg flex p-7">
           <div class="flex-col space-y-2 mx-48">
           <div class="text-black flex items-center justify-between">
             <h2>Alerts</h2>

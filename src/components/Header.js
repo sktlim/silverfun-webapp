@@ -1,12 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Logo from "../assets/silverfunlogo.svg";
 import ProfileIcon from "../assets/icons/profile.svg"
 import Button from "./Button";
 import { Link } from "react-router-dom";
 import ProfileMenu from "./ProfileMenu";
+import {AuthProvider, useAuth} from "../AuthContext"
 
 const Header = () => {
   const [showProfile, setShowProfile] = useState(false);
+  const {currentUser} = useAuth()
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    if (currentUser === null){
+      setIsLoggedIn(false)
+    }
+    else{
+      setIsLoggedIn(true)
+    }
+  }, [currentUser]);
+
   return (
     <div
       className={`w-full h-min relative text-black flex items-center justify-between mb-3`}
@@ -44,7 +57,17 @@ const Header = () => {
           <text className="ml-2">
             PROFILE
           </text>
-        </button>      </div>
+        </button>:
+        <button
+        className={`text-lg ml-4 px-5 pr-6 py-3 text-black flex items-center rounded-md  hover:scale-105 transition-all duration-150 ease-linear bg-yellow drop-shadow-lg`}
+        onClick={event => window.location.href='/Login'}
+      >
+        <text>
+          LOGIN
+        </text>
+      </button>
+        }
+              </div>
     </div>
   );
 };
