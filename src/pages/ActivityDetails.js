@@ -5,23 +5,28 @@ import bicepcurl from "../assets/images/bicepcurl.jpg";
 import cardio from "../assets/images/cardio.jpg";
 import lateralraise from "../assets/images/lateralraise.jpg";
 import Footer from "../components/Footer";
+import gymPic from "../assets/images/ActiveSGgym.jpg"
+import libraryPic from "../assets/images/nlb.jpg"
+import hawkerPic from "../assets/images/hawkerCentre.jpg"
+import { useNavigate } from "react-router-dom";
 
 
 function ActivityDetails() {
 
   const location = useLocation();
+  let navigate = useNavigate();
   
   return (
     <div>
       <Header />
       <div className="flex h-1/3 justify-start">
-        <Link to="/Activities">
+        <button className = "m-0 p-0"  onClick={() => navigate(-1)}>
           <img
             src="https://cdn-icons-png.flaticon.com/512/2889/2889708.png"
-            class="mt-2 mx-8 w-10 h-10"
+            class="mx-8 w-10 h-10"
             alt=""
-          /></Link>
-        <h1 className="text-left mb-5">
+          /></button>
+        <h1 className="text-left mt-3 mb-5">
           <text className="text-blue-700">{location.state.name}</text>
         </h1>
       </div>
@@ -32,7 +37,7 @@ function ActivityDetails() {
         <div>
           {/* photo */}
           <img
-            src={location.state.photo}
+            src={location.state.type == "library" ? libraryPic : location.state.type == "fitness" ? gymPic: location.state.type == "hawker"? hawkerPic: <div></div>}
             class="py-10 px-10 max-w-2xl h-auto w-full"
             alt="Jurong West Public Library"
           />
@@ -69,7 +74,7 @@ function ActivityDetails() {
           {/* box */}
           <div className="border-2 bg-white px-5 w-full rounded-lg drop-shadow-lg shadow shadow-gray-500/40">
             {/* line 1 */}
-            <div class="py-2 px-2 text-left underline">
+            <div class="pb-2 pt-5 px-2 text-left">
               <h4>Website</h4>
             </div>
             {/* line 2 */}
@@ -77,24 +82,25 @@ function ActivityDetails() {
               {/* globe icon */}
               <img
                 src="https://cdn-icons-png.flaticon.com/512/52/52349.png"
-                class="w-4 h-4 mt-2"
+                class="w-6 h-6 mt-2 mr-2"
                 alt="Globe icon"
               />
               {/* website url */}
-              <Link class="mt-1 px-2" to = {location.state.link}>{location.state.link}</Link>
+              <button class="mt-1 px-2 underline text-lg font-normal font-['Roboto'] py-0 my-0 text-left" onClick = {event => {window.open(location.state.link === ""? "https://www.google.com": location.state.link)}}>{location.state.link === ""? "https://www.google.com": location.state.link}</button>
               {/* exit icon */}
-              <img
+              {/* <img
                 src="https://cdn-icons-png.flaticon.com/512/3580/3580189.png"
                 class="w-4 h-4 mt-2 ml-28"
                 alt="Exit icon"
-              />
+              /> */}
             </div>
             {/* line 3 */}
-            <div class="py-2 px-2 text-left underline">
+            <div class=" pt-5 px-2 text-left ">
               <h4>Opening Hours</h4>
             </div>
             {/* line 4 */}
-            <div class="text-left px-2 py-2">
+            <div class="flex mb-5">
+            <div class="text-left pl-2 py-2 pr-10">
               <p>Monday, 10am-9pm
                 <br />
                 Tuesday, 10am-9pm
@@ -103,6 +109,10 @@ function ActivityDetails() {
                 <br />
                 Thursday, 10am-9pm
                 <br />
+              </p>
+            </div>
+            <div class="text-left px-2 py-2">
+              <p>
                 Friday, 10am-9pm
                 <br />
                 Saturday, 10am-9pm
@@ -110,6 +120,7 @@ function ActivityDetails() {
                 Sunday, 10am-9pm
                 <br />
               </p>
+            </div>
             </div>
           </div>
           {location.state.type == "library" ? <div class="">
