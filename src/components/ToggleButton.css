@@ -38,7 +38,7 @@
     .inner:before {
     content: "YES";
     padding-left: 10px;
-    background-color: #060;
+    background-color: #E1AD01;
     color: #fff;
     }
     .inner:after {

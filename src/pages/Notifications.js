@@ -11,19 +11,21 @@ function Notifications() {
     <router>
     <div>
     <Header />
+    
     <div className = "flex h-screen">
         <p className = "text-center m-auto">
           <h1>Alerts and Notifications</h1>
           <br></br>
           <br></br>
 
-          <div>
-          <div class="w-full text-black flex items-center justify-between">
+          <div className="bg-blue-100 h-min w-full m-auto rounded-2xl drop-shadow-lg flex p-7">
+          <div class="flex-col space-y-2 mx-48">
+          <div class="text-black flex items-center justify-between">
             <h2>Alerts</h2>
           </div>
           <br></br>
 
-          <div class="w-full text-black flex items-center justify-between">
+          <div class="w-full text-black flex items-center justify-between space-x-3">
             <h5>Upcoming healthcare appointment</h5>
             <div>
             <React.Fragment>
@@ -65,18 +67,22 @@ function Notifications() {
             <React.Fragment>
               <ToggleButton label="    "/>
             </React.Fragment>
-            <br></br>
-            <br></br>
+
             </div>
           </div>
+          </div>
+          <br></br>
         </div>
+        
         </p>
+        
 
     </div>
+    <br/>
     <Link to="/Home">
       <Stack direction="row" spacing={4}>
-        <Button style={{ marginLeft: 1050 }} variant="outlined" color="error">Cancel</Button>
-        <Button variant="contained" color="success">Save Changes</Button>
+        <Button style={{ marginLeft: 1050 }} variant="outlined" class = "bg-white hover:drop-shadow-lg p-2 rounded-lg">Cancel</Button>
+        <Button variant="contained" class = "bg-yellow rounded-lg text-md p-2 hover:drop-shadow-lg" >Save Changes</Button>
       </Stack>
     </Link>
     <br></br>

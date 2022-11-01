@@ -74,28 +74,41 @@ function EditProfile() {
   return (
     <div>
       <Header />
-      <div className="flex h-screen">
-        <div className="">
-          <div></div>
-          <div className="flex-col">
-            <h1>Edit Profile</h1>
-            <h2>Name</h2>
-
-            <h2>Email</h2>
-            <TextField fullWidth id="email" label="Please Enter New Email" variant="outlined" defaultValue={currentUser.email}
-              onChange={(event) => {
-                setLoginEmail(event.target.value);
-              }} />
-            <h2>Password</h2>
-            <TextField fullWidth id="email" label="Please Enter New Password" variant="outlined"
-              onChange={(event) => {
-                setLoginPassword(event.target.value);
-              }} />
-            <button class=" mt-10 bg-white h-15 w-full rounded-lg align-middle items-center justify-center text-2xl rounded-md  hover:scale-105 transition-all duration-150 ease-linear drop-shadow-lg" onClick={update}>Update</button>
-
-          </div>
-        </div>
+      <div class = "text-center m-auto">
+        <h1>Edit Profile</h1>
       </div>
+      <div className="bg-blue-100 h-min w-5/6 m-auto my-5 rounded-2xl drop-shadow-lg flex p-4">
+      
+    {/* <div className="flex h-screen"> */}
+      {/* <div className=""> */}
+          <div class = "flex mx-auto">
+            <div className="flex flex-col w-96 space-y-3">
+              
+              <div class = "font-bold">Name:</div>
+              <TextField fullWidth id="email" label="Please Enter Username" variant="outlined"></TextField>
+
+              <div class = "font-bold">Email:</div>
+              <TextField fullWidth id="email" label="Please Enter New Email" variant="outlined" defaultValue={currentUser.email}
+                onChange={(event) => {
+                  setLoginEmail(event.target.value);
+                }} />
+              
+              <div class = "font-bold">Password:</div>
+              <TextField fullWidth id="email" label="Please Enter New Password" variant="outlined"
+                onChange={(event) => {
+                  setLoginPassword(event.target.value);
+                }} />
+
+
+              <div class = "font-bold">Phone Number:</div>
+              <TextField fullWidth id="email" label="Please Enter Username" variant="outlined"></TextField>
+              
+              <button class=" mt-10 bg-blue-300 h-15 w-full rounded-lg align-middle items-center justify-center text-xl rounded-md  hover:drop-shadow-lg transition-all duration-150 ease-linear" onClick={update}>Update</button>
+
+            </div>
+          </div>
+      </div>
+      <br/>
       <Footer />
     </div>
   );
