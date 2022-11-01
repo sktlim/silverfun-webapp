@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext"
 import { ReactNotifications, Store } from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
+import {Link} from "react-router-dom";
 
 
 
@@ -30,7 +31,7 @@ function Login() {
         loginPassword
       );
       console.log(user);
-      navigate("/EditProfile");
+      // navigate("/EditProfile");
     } catch (error) {
       console.log(error.message);
       Store.addNotification({
@@ -84,7 +85,9 @@ function Login() {
                   setLoginPassword(event.target.value);
                 }} />
             </div>
+            <Link to= "/Home">
             <button class=" mt-10 bg-white h-15 w-full rounded-lg align-middle items-center justify-center text-2xl rounded-md  hover:scale-105 transition-all duration-150 ease-linear drop-shadow-lg" onClick={signin}>Log in</button>
+            </Link>
             <div className="mt-4">
               <p>
                 New to SilverFun? <a href="/Signup" className="text-blue-700">Sign in</a>

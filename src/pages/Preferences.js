@@ -48,7 +48,7 @@ function Preferences(){
 
           <br/>
           
-          <Link to="/Home">
+          <Link to="/Login">
             <button class = "align-middle bg-yellow w-full text-3xl hover:scale-105 rounded-md "> Done </button>
           </Link>
           
