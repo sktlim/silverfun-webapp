@@ -53,7 +53,7 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className="mt-20 flex justify-evenly w-full mx-10">
+        <div className="mt-10 flex justify-evenly w-full mx-10">
           <div className="relative flex justify-center item-center text-center px-10 m-auto overflow-auto">
             <GMaps url1={url1} url2={url2} url3={url3} state1={state1} state2={state2} state3={state3} className="w-max"/>
           </div>
