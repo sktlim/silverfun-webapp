@@ -59,13 +59,13 @@ function ActivityDetails() {
           </div>
 
           {/* JWL location */}
-          <div>
+          {/* <div>
             <img
               src="https://raw.githubusercontent.com/sktlim/silverfun-webapp/hanyu/src/assets/images/JWPL_Map.png"
               class="px-10 py-5 max-w-2xl h-auto w-full"
               alt="Jurong West Public Library Google Maps"
             />
-          </div>
+          </div> */}
 
         </div>
 
