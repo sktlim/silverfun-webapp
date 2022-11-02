@@ -85,7 +85,7 @@ function Login() {
                   setLoginPassword(event.target.value);
                 }} />
             </div>
-            <Link to= "/Home">
+            <Link to= "/">
             <button class=" mt-10 bg-white h-15 w-full rounded-lg align-middle items-center justify-center text-2xl rounded-md  hover:scale-105 transition-all duration-150 ease-linear drop-shadow-lg" onClick={signin}>Log in</button>
             </Link>
             <div className="mt-4">
