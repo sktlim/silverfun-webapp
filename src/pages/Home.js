@@ -14,7 +14,7 @@ import GMaps from "../components/GMaps";
 import PlaceholderMap from "../assets/images/SGmap.svg"
 import ActivityFlags from "../assets/images/ActivitesIcons.svg"
 import HealthcareFlags from "../assets/images/HealthcareIcons.svg"
-import React, { useState } from 'react'
+import React, { useState , useEffect} from 'react'
 import { ReactNotifications, Store } from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
 import eldercarePic from "../assets/images/eldercarePic.jpg"
@@ -23,16 +23,34 @@ import libraryPic from "../assets/images/nlb.jpg"
 
 function Home() {
   const url1 = 'https://storage.googleapis.com/swe-silverfun-app.appspot.com/gyms-sg-kml.kml';
-  const url2 = 'https://storage.googleapis.com/swe-silverfun-app.appspot.com/ELDERCARE.kml';
+  const url2 = 'https://storage.googleapis.com/swe-silverfun-app.appspot.com/retail-pharmacy-locations-kml.kml';
   const url3 = 'https://storage.googleapis.com/swe-silverfun-app.appspot.com/AED_Locations.kml';
 
   const [state1, setState1] = React.useState(true);
-  const [state2, setState2] = React.useState(false);
+  const [state2, setState2] = React.useState(true);
   const [state3, setState3] = React.useState(false);
 
   const [mapFilter, setMapFilter] = useState("none");
   const ActivityFilter = true;
   const HealthcareFilter = false;
+
+  useEffect(() => {
+    if (mapFilter === "none") {
+      setState1(true)
+      setState2(true)
+    }
+    else if (mapFilter === "Activities") {
+      setState2(false)
+      setState1(true)
+    }
+    else if (mapFilter === "Healthcare") {
+      setState1(false)
+      setState2(true)
+    }
+  }, [mapFilter]);
+
+
+
   return (
     <div>
       <div className="relative bg-blue-100 h-min pb-20">
