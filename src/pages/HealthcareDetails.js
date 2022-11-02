@@ -55,13 +55,13 @@ function HealthcareDetails() {
             </div>
 
             {/* JWL location */}
-            <div>
+            {/* <div>
               <img
                 src="https://github.com/sktlim/silverfun-webapp/blob/hanyu/src/assets/images/Jurong%20Medical%20Center%20Location.png?raw=true"
                 class="px-10 py-5 max-w-2xl h-auto w-full"
                 alt="Jurong Medical Center Google Maps"
               />
-            </div>
+            </div> */}
 
           </div>
 

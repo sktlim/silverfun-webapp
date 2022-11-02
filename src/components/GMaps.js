@@ -284,14 +284,14 @@ function Search({ panTo }) {
         //       placeholder="Search for activities near you"
         //       name="s" />
         //   </div>
-        <div class="flex justify-center bg-white">
+        <div class="flex justify-center">
             <div className="flex justify-center border-2 border-gray-300 h-10 w-72 rounded-lg text-sm focus:outline-none shadow items-center mt-5">
                 <Combobox onSelect={handleSelect}>
                     <ComboboxInput
                         value={value}
                         onChange={handleInput}
                         disabled={!ready}
-                        className="text-center"
+                        className="text-center bg-blue-100"
                         placeholder="Search your location"
                     />
                     <ComboboxPopover className="bg-white">
