@@ -37,7 +37,7 @@ function Signup() {
         registerPassword
       );
       console.log(user);
-      navigate("/Login");
+      navigate("/Preferences");
     } catch (error) {
       setError(error.message);
       Store.addNotification({
@@ -100,9 +100,7 @@ function Signup() {
                   cfmRegisteredPassword(event.target.value);
                 }}
               />
-              <Link to = "/Preferences">
                 <button class=" mt-10 bg-white h-15 w-full rounded-lg align-middle items-center justify-center text-2xl rounded-md  hover:scale-105 transition-all duration-150 ease-linear drop-shadow-lg" onClick={register}>Sign up</button>
-              </Link>
               <div className="mt-4">
                 <p>
                   Already on SilverFun? <a href="/Login" className="text-blue-700">Log in</a>
