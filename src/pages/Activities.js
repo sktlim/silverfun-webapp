@@ -12,7 +12,7 @@ import { library } from "../assets/geoJSON/libraries";
 import { hawker } from "../assets/geoJSON/hawker"
 import { gyms } from "../assets/geoJSON/gyms"
 import axios from 'axios';
-
+import {useActivityLocation, useActivityLocationUpdate, ActivityLocationProvider} from "../ActivityLocationContext"
 
 
 function Activities() {
@@ -64,15 +64,26 @@ function Activities() {
     ["loading", "loading", "loading"], "loading"])
   const [display, setDisplay] = React.useState(loadingOptions);
 
+
   //library
   const libraryData = new Blob([JSON.stringify(library, null, 2)], {
     type: "application/json",
   });
 
+  const inputfields = useActivityLocation();
+  const {inputfieldsupdate} = useActivityLocationUpdate();
+  const [inputClick, setInputClick] = React.useState(false)
+
+  useEffect(() => {
+    console.log("inputfields", inputfields)
+    libform.lng = inputfields.lng
+    libform.lat = inputfields.lat
+  }, [inputfields]);
+
   const libform = new FormData();
   libform.append("data", libraryData, "libraries.geojson");
-  libform.append("lat", "1.3483");
-  libform.append("lng", "103.6831");
+  libform.append("lat", String(inputfields.lat));
+  libform.append("lng", String(inputfields.lng));
 
   const liboptions = {
     method: "POST",
@@ -114,6 +125,7 @@ function Activities() {
 
 
   useEffect(() => {
+    console.log("libform", libform)
     axios.post("https://silverfun-backend.limsui.repl.co", libform, liboptions)
       .then(response => {
         console.log("libraries");
@@ -132,7 +144,7 @@ function Activities() {
       .catch(error => {
         console.log(error);
       });
-  }, [])
+  }, [inputfields])
 
   useEffect(() => {
     console.log(filter)
@@ -155,13 +167,9 @@ function Activities() {
       setState2(false)
       setState3(false)
     }
-  }, [filter, isLoading]);
+  }, [filter, isLoading, topLibraries]);
 
-  useEffect(() => {
-    console.log("address from search bar")
-    console.log(toRender)
-    setMapsReady(false)
-  }, [mapsReady]);
+ 
 
 
 
@@ -193,6 +201,7 @@ function Activities() {
 
 
 return (
+  // <ActivityLocationProvider>
   <div>
 
     <Header />
@@ -203,7 +212,7 @@ return (
 
         <br />
         <div className="w-max-3xl">
-          <GMaps url1={url1} url2={url2} url3={url3} state1={state1} state2={state2} state3={state3} className="w-max-3xl" />
+          <GMaps url1={url1} url2={url2} url3={url3} state1={state1} state2={state2} state3={state3} onClickHandler = {()=>setInputClick(!inputClick)} className="w-max-3xl" />
         </div>
         <br />
 
@@ -284,6 +293,7 @@ return (
 
     <Footer />
   </div>
+  // </ActivityLocationProvider>
 );
 
 }

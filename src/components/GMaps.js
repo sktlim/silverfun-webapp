@@ -22,6 +22,8 @@ import {
 // import "@reach/combobox/styles.css";
 import mapStyles from "../Styles/mapStyles";
 import compass from "../assets/icons/compass.svg";
+import { useActivityLocationUpdate } from "../ActivityLocationContext"
+
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -40,7 +42,7 @@ const center = {
 
 
 
-export default function GMaps(url1, state1, url2, state2, url3, state3) {
+export default function GMaps(url1, state1, url2, state2, url3, state3, onClickHandler) {
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GMAPS_API_KEY,
         libraries,
@@ -78,8 +80,8 @@ export default function GMaps(url1, state1, url2, state2, url3, state3) {
         mapRef.current.setZoom(14);
     }, []);
 
-    
-    
+
+
     // const {
     //     ready,
     //     value,
@@ -128,7 +130,7 @@ export default function GMaps(url1, state1, url2, state2, url3, state3) {
                     center={center}
                     options={options}
                     resetBoundsOnResize={true}
-                    // onClick={onMapClick}
+                    onClick={onClickHandler}
                     onLoad={onMapLoad}
                 >
                     {url1.state1 ? <KmlLayer url={String(url1.url1)} /> : <div />}
@@ -231,7 +233,10 @@ function Locate({ panTo }) {
 
 
 
-function Search({ panTo}) {
+function Search({ panTo }) {
+    const toggleActivity = useActivityLocationUpdate();
+    console.log('dfsjd', toggleActivity)
+
     const {
         ready,
         value,
@@ -246,7 +251,7 @@ function Search({ panTo}) {
         },
     });
 
-//     // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
+    //     // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
 
     const handleInput = (e) => {
         setValue(e.target.value);
@@ -261,7 +266,11 @@ function Search({ panTo}) {
             const { lat, lng } = await getLatLng(results[0]);
             // setToRender({ lat, lng });
             // setMapsReady(true);
-            panTo({ lat, lng });
+            console.log(address)
+            console.log(lat)
+            toggleActivity({ lat, lng });
+
+            panTo({ lat, lng });    // { lat: lat, lng: lng }
         } catch (error) {
             console.log("Error: ", error);
         }
@@ -276,14 +285,14 @@ function Search({ panTo}) {
         //       placeholder="Search for activities near you"
         //       name="s" />
         //   </div>
-        <div class="flex justify-center bg-white">
+        <div class="flex justify-center">
             <div className="flex justify-center border-2 border-gray-300 h-10 w-72 rounded-lg text-sm focus:outline-none shadow items-center mt-5">
                 <Combobox onSelect={handleSelect}>
                     <ComboboxInput
                         value={value}
                         onChange={handleInput}
                         disabled={!ready}
-                        className="text-center"
+                        className="text-center bg-blue-100"
                         placeholder="Search your location"
                     />
                     <ComboboxPopover className="bg-white">

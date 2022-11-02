@@ -34,7 +34,7 @@ const ProfileMenu = () => {
           onScreen: true
         }
       });
-      navigate("/Home");
+      navigate("/");
       
     } catch (error) {
       console.log(error.message);
