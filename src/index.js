@@ -22,11 +22,13 @@ import {
   Route,
 } from "react-router-dom";
 import { AuthProvider } from './AuthContext';
+import {ActivityLocationProvider} from './ActivityLocationContext'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <AuthProvider>
+      <ActivityLocationProvider>
       <Routes>
         {/* <Route path='/' element={<Home />} /> */}
         <Route path='/*' element={<Home />} />
@@ -42,6 +44,7 @@ root.render(
         <Route path='/Notifications' element={<Notifications />} />
         <Route path='/Preferences' element={<Preferences />} />
       </Routes>
+      </ActivityLocationProvider>
     </AuthProvider>
   </BrowserRouter>
 );

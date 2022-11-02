@@ -90,7 +90,7 @@ function Login() {
             </Link>
             <div className="mt-4">
               <p>
-                New to SilverFun? <a href="/Signup" className="text-blue-700">Sign in</a>
+                New to SilverFun? <a href="/Signup" className="text-blue-700">Sign up</a>
               </p>
             </div>
           </div>
