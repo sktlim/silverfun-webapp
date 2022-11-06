@@ -3,10 +3,36 @@
 ## Description
 A one stop elderly care application for caregivers who want to find information to best help the elderly in their family or IT-literate elderly. This is a Centralised platform for elderly/caregivers to find elderly-related services to ease their workload.
 
+## Installation Instructions
+This is a very simplified guide on setting up local environment for Windows
+
+### Setting up repository
+Go to a folder where you want the repository to be in
+Clone the repository 
+``` git clone https://github.com/sktlim/silverfun-webapp ```
+
+### Install required dependencies 
+To install required dependencies, follow steps below. 
+1. Install npm
+2. Install required npm dependencies
+``` npm i npm-install-peers```
+
+### Start Application
+To start the application, run command below in terminal. 
+``` npm run start ```
+
+Note that Google Maps related functionalities require Google Maps API key to be entered on source code to be able to display.
+
 ## Links
 
-SRS Document
-- [SRS](https://docs.google.com/document/d/1_GwrTvWk-4McNeNmLYqrOse6oxDh4LEY/edit?usp=sharing&ouid=112519818405225364103&rtpof=true&sd=true)
+### Lab 5 Deliverables
+- [Demo Video](https://youtu.be/SWk1dCicpxs)
+- [Software Requirement Specifications](https://docs.google.com/document/d/1_GwrTvWk-4McNeNmLYqrOse6oxDh4LEY/edit?usp=sharing&ouid=112519818405225364103&rtpof=true&sd=true)
+
+### Lab 4 Deliverables
+- [Test Cases and Testing Results](https://drive.google.com/file/d/1c92kzzZ0SEdAPhdTcsQlY_u-Lnjh6VoO/view?usp=share_link)
+- [Test Case](https://docs.google.com/document/d/14ydoTAfdo9neIqfdwa4G1YKEXzEk-S94tlsnhw9hIqY/edit?usp=share_link)
+- [Demo Script](https://docs.google.com/document/d/14bfhNYWQoz73-unthRf4ke0XjsAdOIPPR7WtnAmLPgI/edit?usp=sharing)
 
 ### Lab 3 Deliverables
 - [Complete Use Case Model](https://docs.google.com/document/d/1plltwk9-pNZJrW5zI2ByCiYaP5_94XND2laGgNCbEKA/edit?usp=sharing)
