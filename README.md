@@ -15,11 +15,15 @@ Clone the repository
 To install required dependencies, follow steps below. 
 1. Install npm
 2. Install required npm dependencies
-``` npm i npm-install-peers```
+``` 
+npm i npm-install-peers
+```
 
 ### Start Application
 To start the application, run command below in terminal. 
-``` npm run start ```
+``` 
+npm run start
+```
 
 Note that Google Maps related functionalities require Google Maps API key to be entered on source code to be able to display.
 
